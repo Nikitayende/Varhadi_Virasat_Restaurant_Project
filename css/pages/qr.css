@@ -1,0 +1,559 @@
+/* ======================================================
+   QR MANAGEMENT PAGE
+====================================================== */
+
+.qr-page{
+
+    width:90%;
+
+    max-width:1400px;
+
+    margin:auto;
+
+    padding:120px 0 60px;
+
+}
+
+.qr-page h1{
+
+    text-align:center;
+
+    color:#2E7D32;
+
+    font-size:42px;
+
+    margin-bottom:35px;
+
+}
+
+
+/* ======================================================
+   PAGE HEADER
+====================================================== */
+
+.manage-header{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    flex-wrap:wrap;
+
+    gap:20px;
+
+    margin-bottom:30px;
+
+}
+
+.page-title{
+
+    color:#2E7D32;
+
+    font-size:40px;
+
+    font-weight:700;
+
+}
+
+
+/* ======================================================
+   SEARCH BAR
+====================================================== */
+
+.table-search{
+
+    margin-bottom:25px;
+
+}
+
+.table-search input{
+
+    width:100%;
+
+    max-width:600px;
+
+    padding:12px 16px;
+
+    border:2px solid #2E7D32;
+
+    border-radius:10px;
+
+    outline:none;
+
+    font-size:16px;
+
+}
+
+.table-search input:focus{
+
+    box-shadow:0 0 10px rgba(46,125,50,.15);
+
+}
+
+
+/* ======================================================
+   FILTER BUTTONS
+====================================================== */
+
+.table-filters{
+
+    display:flex;
+
+    flex-wrap:wrap;
+
+    gap:10px;
+
+    margin-bottom:30px;
+
+}
+
+.filter-btn{
+
+    padding:10px 18px;
+
+    border:none;
+
+    border-radius:30px;
+
+    background:#E0E0E0;
+
+    font-weight:600;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+}
+
+.filter-btn:hover{
+
+    background:#2E7D32;
+
+    color:#fff;
+
+}
+
+.filter-btn.active{
+
+    background:#2E7D32;
+
+    color:#fff;
+
+}
+
+
+/* ======================================================
+   SUMMARY CARDS
+====================================================== */
+
+.qr-summary{
+
+    display:flex;
+
+    gap:20px;
+
+    flex-wrap:wrap;
+
+    margin:30px 0;
+
+}
+
+.summary-card{
+
+    flex:1;
+
+    min-width:180px;
+
+    padding:20px;
+
+    background:#2E7D32;
+
+    color:#fff;
+
+    border-radius:15px;
+
+    text-align:center;
+
+    box-shadow:0 10px 25px rgba(0,0,0,.10);
+
+}
+
+.summary-card h2{
+
+    font-size:34px;
+
+    margin-bottom:8px;
+
+}
+
+.summary-card p{
+
+    font-size:15px;
+
+}
+
+
+/* ======================================================
+   TABLE GRID
+====================================================== */
+
+.table-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(auto-fill,minmax(320px,1fr));
+
+    gap:25px;
+
+}
+
+
+/* ======================================================
+   TABLE CARD
+====================================================== */
+
+.table-card{
+
+    background:#fff;
+
+    padding:22px;
+
+    border-radius:18px;
+
+    text-align:center;
+
+    box-shadow:0 10px 30px rgba(0,0,0,.08);
+
+    transition:.35s;
+
+}
+
+.table-card:hover{
+
+    transform:translateY(-6px);
+
+}
+
+.table-card h3{
+
+    color:#2E7D32;
+
+    margin-bottom:15px;
+
+}
+
+
+/* ======================================================
+   QR IMAGE
+====================================================== */
+
+.table-qr{
+
+    width:220px;
+
+    max-width:100%;
+
+    display:block;
+
+    margin:20px auto;
+
+}
+
+
+/* ======================================================
+   ACTION BUTTONS
+====================================================== */
+
+.table-buttons{
+
+    display:flex;
+
+    justify-content:center;
+
+    gap:10px;
+
+    flex-wrap:wrap;
+
+    margin-top:20px;
+
+}
+
+.table-buttons button{
+
+    width:110px;
+
+    height:40px;
+
+    border:none;
+
+    border-radius:8px;
+
+    cursor:pointer;
+
+    font-size:14px;
+
+    font-weight:600;
+
+    transition:.3s;
+
+}
+
+.print-btn{
+
+    background:#2E7D32;
+
+    color:#fff;
+
+}
+
+.print-btn:hover{
+
+    background:#1B5E20;
+
+}
+
+.edit-btn{
+
+    background:#2196F3;
+
+    color:#fff;
+
+}
+
+.edit-btn:hover{
+
+    background:#1976D2;
+
+}
+
+.delete-btn{
+
+    background:#E53935;
+
+    color:#fff;
+
+}
+
+.delete-btn:hover{
+
+    background:#C62828;
+
+}
+
+
+/* ======================================================
+   ADD TABLE FORM
+====================================================== */
+
+.add-table-card{
+
+    max-width:700px;
+
+    margin:35px auto;
+
+    background:#fff;
+
+    border-radius:20px;
+
+    overflow:hidden;
+
+    box-shadow:0 15px 40px rgba(0,0,0,.08);
+
+}
+
+.card-header{
+
+    background:linear-gradient(135deg,#2E7D32,#43A047);
+
+    color:#fff;
+
+    padding:30px;
+
+    text-align:center;
+
+}
+
+.card-header h2{
+
+    margin:0;
+
+    font-size:28px;
+
+}
+
+.card-header p{
+
+    margin-top:10px;
+
+    opacity:.9;
+
+}
+
+.add-table-card form{
+
+    padding:35px;
+
+}
+
+
+/* ======================================================
+   FORM GRID
+====================================================== */
+
+.form-grid{
+
+    display:grid;
+
+    grid-template-columns:1fr 1fr;
+
+    gap:20px;
+
+}
+
+.form-group{
+
+    margin-bottom:20px;
+
+}
+
+.form-group label{
+
+    display:block;
+
+    margin-bottom:8px;
+
+    color:#2E7D32;
+
+    font-weight:600;
+
+}
+
+.form-group input,
+.form-group select{
+
+    width:100%;
+
+    height:52px;
+
+    padding:0 16px;
+
+    border:2px solid #ddd;
+
+    border-radius:10px;
+
+    font-size:15px;
+
+    outline:none;
+
+    transition:.3s;
+
+}
+
+.form-group input:focus,
+.form-group select:focus{
+
+    border-color:#2E7D32;
+
+    box-shadow:0 0 10px rgba(46,125,50,.15);
+
+}
+
+.create-table-btn{
+
+    width:100%;
+
+    margin-top:15px;
+
+    padding:15px;
+
+    border:none;
+
+    border-radius:10px;
+
+    background:linear-gradient(135deg,#2E7D32,#43A047);
+
+    color:#fff;
+
+    font-size:18px;
+
+    font-weight:600;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+}
+
+.create-table-btn:hover{
+
+    transform:translateY(-3px);
+
+}
+
+
+/* ======================================================
+   RESPONSIVE
+====================================================== */
+
+@media(max-width:768px){
+
+    .table-grid{
+
+        grid-template-columns:1fr;
+
+    }
+
+    .qr-summary{
+
+        flex-direction:column;
+
+    }
+
+    .manage-header{
+
+        flex-direction:column;
+
+    }
+
+    .form-grid{
+
+        grid-template-columns:1fr;
+
+    }
+
+    .table-buttons{
+
+        flex-direction:column;
+
+        align-items:center;
+
+    }
+
+    .table-buttons button{
+
+        width:100%;
+
+        max-width:220px;
+
+    }
+
+}
+
+@media(max-width:480px){
+
+    .page-title{
+
+        font-size:30px;
+
+    }
+
+    .summary-card h2{
+
+        font-size:28px;
+
+    }
+
+}
+

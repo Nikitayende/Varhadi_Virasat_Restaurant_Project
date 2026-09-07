@@ -1,0 +1,155 @@
+/* ==========================================
+   PRELOADER
+========================================== */
+
+#preloader{
+
+    position:fixed;
+
+    inset:0;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    background:#FFFAF3;
+
+    z-index:999999;
+
+    transition:opacity .6s ease,
+               visibility .6s ease;
+
+}
+
+#preloader.hide{
+
+    opacity:0;
+
+    visibility:hidden;
+
+}
+
+
+/* ==========================================
+   LOADER BOX
+========================================== */
+
+.loader-box{
+
+    text-align:center;
+
+}
+
+.loader-logo{
+
+    width:100px;
+
+    margin-bottom:20px;
+
+}
+
+.loader-icon{
+
+    display:block;
+
+    font-size:70px;
+
+    color:#8B0000;
+
+    margin-bottom:20px;
+
+}
+
+.loader-box h2{
+
+    color:#8B0000;
+
+    font-size:30px;
+
+    margin-bottom:25px;
+
+}
+
+
+/* ==========================================
+   SPINNER
+========================================== */
+
+.loader-spinner{
+
+    width:55px;
+
+    height:55px;
+
+    margin:auto;
+
+    border:5px solid #EEEEEE;
+
+    border-top:5px solid #D4A017;
+
+    border-radius:50%;
+
+    animation:spin 2s linear infinite;
+
+}
+
+
+/* ==========================================
+   SPINNER ANIMATION
+========================================== */
+
+@keyframes spin{
+
+    from{
+
+        transform:rotate(0deg);
+
+    }
+
+    to{
+
+        transform:rotate(360deg);
+
+    }
+
+}
+
+
+/* ==========================================
+   RESPONSIVE
+========================================== */
+
+@media(max-width:768px){
+
+    .loader-logo{
+
+        width:80px;
+
+    }
+
+    .loader-icon{
+
+        font-size:55px;
+
+    }
+
+    .loader-box h2{
+
+        font-size:24px;
+
+    }
+
+    .loader-spinner{
+
+        width:45px;
+
+        height:45px;
+
+        border-width:4px;
+
+    }
+
+}
+

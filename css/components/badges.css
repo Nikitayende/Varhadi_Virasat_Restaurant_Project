@@ -1,0 +1,189 @@
+/* ==========================================
+   MENU BADGES
+========================================== */
+
+.veg-badge{
+
+    display:inline-block;
+
+    background:#DFF5DF;
+
+    color:#2E7D32;
+
+    padding:5px 10px;
+
+    border-radius:20px;
+
+    font-size:13px;
+
+}
+
+.special-badge{
+
+    display:inline-block;
+
+    background:#FFF2D8;
+
+    color:#D97706;
+
+    padding:5px 10px;
+
+    border-radius:20px;
+
+    font-size:13px;
+
+    margin-left:10px;
+
+}
+
+
+/* ==========================================
+   RESERVATION STATUS BADGES
+========================================== */
+
+.status-badge{
+
+    display:inline-flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    min-width:130px;
+
+    padding:8px 18px;
+
+    border-radius:30px;
+
+    font-size:14px;
+
+    font-weight:bold;
+
+}
+
+.pending{
+
+    background:#FFF3CD;
+
+    color:#856404;
+
+}
+
+.confirmed{
+
+    background:#D4EDDA;
+
+    color:#155724;
+
+}
+
+.dining{
+
+    background:#D1ECF1;
+
+    color:#0C5460;
+
+}
+
+.completed{
+
+    background:#E2E3E5;
+
+    color:#383D41;
+
+}
+
+
+/* ==========================================
+   ORDER STATUS
+========================================== */
+
+.status{
+
+    display:inline-block;
+
+    padding:6px 14px;
+
+    border-radius:30px;
+
+    font-size:13px;
+
+    font-weight:600;
+
+    text-align:center;
+
+    min-width:95px;
+
+}
+
+/* Pending */
+
+.status.pending{
+
+    background:#fff3cd;
+
+    color:#856404;
+
+}
+
+/* Preparing */
+
+.status.preparing{
+
+    background:#d1ecf1;
+
+    color:#0c5460;
+
+}
+
+/* Ready */
+
+.status.ready{
+
+    background:#d4edda;
+
+    color:#155724;
+
+}
+
+/* Served */
+
+.status.served{
+
+    background:#e2e3e5;
+
+    color:#343a40;
+
+}
+
+
+/* ==========================================
+   RESPONSIVE
+========================================== */
+
+@media(max-width:768px){
+
+    .status-badge{
+
+        min-width:110px;
+
+        font-size:13px;
+
+        padding:6px 12px;
+
+    }
+
+}
+
+@media(max-width:480px){
+
+    .status-badge{
+
+        min-width:110px;
+
+        font-size:12px;
+
+    }
+
+}
+

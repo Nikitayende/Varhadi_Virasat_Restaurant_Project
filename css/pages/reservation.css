@@ -1,0 +1,711 @@
+/* ======================================================
+   RESERVATION PAGE
+====================================================== */
+
+.reservation-page{
+
+    width:90%;
+
+    max-width:1300px;
+
+    margin:0 auto;
+
+    padding:120px 0 60px;
+
+}
+
+.reservation-page h1{
+
+    text-align:center;
+
+    color:#2E7D32;
+
+    font-size:42px;
+
+    margin-bottom:35px;
+
+}
+
+
+/* ======================================================
+   RESERVATION FORM
+====================================================== */
+
+.reservation-container{
+
+    width:80%;
+
+    max-width:600px;
+
+    margin:40px auto;
+
+}
+
+.reservation-form{
+
+    width: 80%;
+
+    max-width:600px;
+
+    margin:40px auto;
+
+    background:#fff;
+
+    padding:35px;
+
+    border-radius:20px;
+
+    box-shadow:0 12px 30px rgba(0,0,0,.08);
+
+}
+
+.reservation-form label{
+
+    display:block;
+
+    margin:18px 0 8px;
+
+    color:#333;
+
+    font-weight:600;
+
+}
+
+.reservation-form input,
+.reservation-form select,
+.reservation-form textarea{
+
+    width:100%;
+
+    padding:14px;
+
+    border:2px solid #ddd;
+
+    border-radius:10px;
+
+    font-size:15px;
+
+    outline:none;
+
+    transition:.3s;
+
+}
+
+.reservation-form input:focus,
+.reservation-form select:focus,
+.reservation-form textarea:focus{
+
+    border-color:#2E7D32;
+
+    box-shadow:0 0 10px rgba(46,125,50,.15);
+
+}
+
+.reservation-form textarea{
+
+    resize:vertical;
+
+    min-height:120px;
+
+}
+
+.reservation-form button{
+
+    width:100%;
+
+    margin-top:25px;
+
+    padding:15px;
+
+    border:none;
+
+    border-radius:12px;
+
+    background:#2E7D32;
+
+    color:#fff;
+
+    font-size:17px;
+
+    font-weight:600;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+}
+
+.reservation-form button:hover{
+
+    background:#D4A017;
+
+}
+
+
+/* ======================================================
+   RESERVATION TABLE
+====================================================== */
+
+.reservation-table{
+
+    width:100%;
+
+    border-collapse:collapse;
+
+    table-layout:fixed;
+
+    background:#fff;
+
+    border-radius:15px;
+
+    overflow:hidden;
+
+    box-shadow:0 10px 30px rgba(0,0,0,.08);
+
+}
+
+.reservation-table th{
+
+    background:#2E7D32;
+
+    color:#fff;
+
+    padding:15px;
+
+    font-size:15px;
+
+}
+
+.reservation-table td{
+
+    padding:15px;
+
+    text-align:center;
+
+    border-bottom:1px solid #ddd;
+
+    vertical-align:middle;
+
+}
+
+.reservation-table tbody tr:hover{
+
+    background:#fafafa;
+
+}
+
+
+/* ======================================================
+   STATUS BADGES
+====================================================== */
+
+.status-badge{
+
+    display:inline-flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    min-width:120px;
+
+    padding:8px 16px;
+
+    border-radius:30px;
+
+    font-size:13px;
+
+    font-weight:700;
+
+}
+
+.pending{
+
+    background:#FFF3CD;
+
+    color:#856404;
+
+}
+
+.confirmed{
+
+    background:#D4EDDA;
+
+    color:#155724;
+
+}
+
+.dining{
+
+    background:#D1ECF1;
+
+    color:#0C5460;
+
+}
+
+.completed{
+
+    background:#E2E3E5;
+
+    color:#383D41;
+
+}
+
+
+/* ======================================================
+   RESERVATION ACTIONS
+====================================================== */
+
+.reservation-actions{
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:center;
+
+    gap:10px;
+
+}
+
+.reservation-actions button{
+
+    width:140px;
+
+}
+
+
+/* ======================================================
+   ORDER TRACKING
+====================================================== */
+
+.order-progress{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    margin:45px 0;
+
+}
+
+.step{
+
+    flex:1;
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:center;
+
+}
+
+.circle{
+
+    width:65px;
+
+    height:65px;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    border-radius:50%;
+
+    background:#d9d9d9;
+
+    color:#fff;
+
+    font-size:26px;
+
+}
+
+.step.active .circle{
+
+    background:#2E7D32;
+
+}
+
+.step p{
+
+    margin-top:12px;
+
+    font-weight:600;
+
+}
+
+.line{
+
+    flex:1;
+
+    height:5px;
+
+    margin:0 10px;
+
+    background:#d9d9d9;
+
+    border-radius:20px;
+
+}
+
+.line.active{
+
+    background:#2E7D32;
+
+}
+
+
+/* ======================================================
+   TRACK ORDER
+====================================================== */
+
+.track-status{
+
+    text-align:center;
+
+    margin-top:35px;
+
+}
+
+.track-status h2{
+
+    color:#2E7D32;
+
+    margin-bottom:10px;
+
+}
+
+.track-status p{
+
+    color:#666;
+
+}
+
+
+/* ======================================================
+   ORDER STATUS
+====================================================== */
+
+.status{
+
+    display:inline-block;
+
+    min-width:95px;
+
+    padding:6px 14px;
+
+    border-radius:30px;
+
+    text-align:center;
+
+    font-size:13px;
+
+    font-weight:600;
+
+}
+
+.status.pending{
+
+    background:#FFF3CD;
+
+    color:#856404;
+
+}
+
+.status.preparing{
+
+    background:#D1ECF1;
+
+    color:#0C5460;
+
+}
+
+.status.ready{
+
+    background:#D4EDDA;
+
+    color:#155724;
+
+}
+
+.status.served{
+
+    background:#E2E3E5;
+
+    color:#343A40;
+
+}
+
+
+/* ======================================================
+   MOBILE
+====================================================== */
+
+@media(max-width:768px){
+
+    .reservation-page{
+
+        width:95%;
+
+        padding-top:30px;
+
+    }
+
+    .reservation-form{
+
+        padding:30px 18px;
+
+    }
+
+    .reservation-table{
+
+        display:block;
+
+        overflow-x:auto;
+
+        white-space:nowrap;
+
+    }
+
+    .reservation-table th,
+    .reservation-table td{
+
+        min-width:130px;
+
+        font-size:14px;
+
+    }
+
+    .reservation-actions{
+
+        gap:8px;
+
+    }
+
+    .reservation-actions button{
+
+        width:120px;
+
+    }
+
+    .status-badge{
+
+        min-width:110px;
+
+        font-size:12px;
+
+    }
+
+    .circle{
+
+        width:50px;
+
+        height:50px;
+
+        font-size:20px;
+
+    }
+
+    .step p{
+
+        font-size:12px;
+
+    }
+
+}
+
+@media(max-width:480px){
+
+    .reservation-page h1{
+
+        font-size:20px;
+
+    }
+
+    .reservation-form{
+
+        padding:25px 10px;
+
+    }
+
+}
+
+
+/* ======================================================
+   HOME RESERVATION CTA
+====================================================== */
+
+.reservation-home{
+
+    position:relative;
+
+    padding:140px 0;
+
+    background:
+        linear-gradient(rgba(0,0,0,.65),rgba(0,0,0,.65)),
+        url("../images/gallery/hero_outside.jpg") !important;
+
+    background-size:cover;
+
+    background-position:center;
+
+    background-attachment:fixed;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+}
+
+.reservation-overlay{
+
+    width:100%;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    text-align:center;
+
+}
+
+.reservation-box{
+
+    width:80%;
+
+    max-width:600px;
+
+    padding:30px 25px;
+
+    border-radius:25px;
+
+    background:rgba(255,255,255,.10);
+
+    background-image:url("../images/gallery/hero_outside.jpg") !important;
+
+    background-repeat:no-repeat;
+
+
+    backdrop-filter:blur(16px);
+
+    -webkit-backdrop-filter:blur(16px);
+
+    border:1px solid rgba(255,255,255,.20);
+
+    color:#ffffff;
+
+}
+
+.reservation-box span{
+
+    display:block;
+
+    color:#FFD166;
+
+    font-size:15px;
+
+    font-weight:700;
+
+    letter-spacing:1px;
+
+    text-transform:uppercase;
+
+    margin-bottom:15px;
+
+}
+
+.reservation-box h2{
+
+    font-size:42px;
+
+    margin-bottom:18px;
+
+    color:#ffffff;
+
+}
+
+.reservation-box p{
+
+    font-size:16px;
+
+    line-height:1.7;
+
+    color:#f3f3f3;
+
+    margin-bottom:30px;
+
+}
+
+
+/* ==========================================
+   RESPONSIVE
+========================================== */
+
+@media(max-width:768px){
+
+    .reservation-home{
+
+        padding:40px 10px;
+
+        background-attachment:scroll;
+
+    }
+
+    .reservation-box{
+
+        width:85%;
+
+        padding:20px 10px;
+
+    }
+
+    .reservation-box h2{
+
+        font-size:28px;
+
+    }
+
+    .reservation-box p{
+
+        font-size:15px;
+
+    }
+
+    .reservation-btn{
+
+        width:100%;
+
+    }
+
+}
+
+@media(max-width:480px){
+
+    .reservation-home{
+
+        padding:30px 10px;
+
+    }
+
+    .reservation-box h2{
+
+        font-size:26px;
+
+    }
+
+    .reservation-box p{
+
+        font-size:14px;
+
+    }
+
+}

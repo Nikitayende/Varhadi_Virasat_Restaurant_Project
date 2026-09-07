@@ -1,0 +1,548 @@
+/* ======================================================
+   HERO SECTION
+====================================================== */
+
+.hero{
+
+    position:relative;
+
+    min-height:100vh;
+
+    padding:120px 0 80px;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    overflow:hidden;
+
+    background-size:cover;
+
+    background-position:center;
+
+    background-repeat:no-repeat;
+
+    background-attachment:fixed;
+
+    transition:background-image .8s ease-in-out;
+
+}
+
+.hero::before{
+
+    content:"";
+
+    position:absolute;
+
+    inset:0;
+
+    background:rgba(0,0,0,.55);
+
+    z-index:1;
+
+}
+
+
+/* ======================================================
+   HERO BACKGROUND
+====================================================== */
+
+.hero-bg{
+
+    position:absolute;
+
+    inset:0;
+
+    background-size:cover;
+
+    background-position:center;
+
+    background-repeat:no-repeat;
+
+    opacity:0;
+
+    transition:opacity 1s ease;
+
+    z-index:0;
+
+}
+
+.hero-bg-1{
+
+    opacity:1;
+
+}
+
+.hero-bg-2{
+
+    opacity:0;
+
+}
+
+.hero-overlay{
+
+    position:absolute;
+
+    inset:0;
+
+    background:rgba(0,0,0,.55);
+
+    z-index:1;
+
+}
+
+
+/* ======================================================
+   HERO CONTAINER
+====================================================== */
+
+.hero-container{
+
+    position:relative;
+
+    z-index:2;
+
+    width:100%;
+
+    max-width:1000px;
+
+    margin:auto;
+
+    padding:15px 8px;
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:center;
+
+    align-items:center;
+
+    text-align:center;
+
+    gap:35px;
+
+}
+
+
+/* ======================================================
+   HERO CONTENT
+====================================================== */
+
+.hero-left{
+
+    color:#fff;
+
+    width:100%;
+
+    max-width:900px;
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:center;
+
+    align-items:center;
+
+    text-align:center;
+
+}
+
+.hero-right{
+
+    text-align:center;
+
+}
+
+.hero-right img{
+
+    width:100%;
+
+    max-width:500px;
+
+    border-radius:25px;
+
+    box-shadow:0 25px 60px rgba(0,0,0,.45);
+
+    transition:opacity .6s ease;
+
+}
+
+.hero-right img.fade{
+
+    opacity:0;
+
+}
+
+
+/* ======================================================
+   HERO BADGE
+====================================================== */
+
+.hero-badge{
+
+    display:inline-block;
+
+    padding:8px 14px;
+
+    margin-bottom:20px;
+
+    border-radius:50px;
+
+    background:#D4A017;
+
+    color:#fff;
+
+    font-size:15px;
+
+    font-weight:600;
+
+}
+
+
+/* ======================================================
+   HERO TEXT
+====================================================== */
+
+.hero-marathi{
+
+    font-size:70px;
+
+    line-height:1;
+
+    font-weight:800;
+
+    color:#fff;
+
+}
+
+.hero-title{
+
+    font-size:90px;
+
+    line-height:.95;
+
+    margin-bottom:15px;
+
+    color:#ffb400;
+
+}
+
+.hero-subtitle{
+
+    margin-bottom:15px;
+
+    font-size:36px;
+
+    color:#fff;
+
+}
+
+.hero-description{
+
+    max-width:600px;
+
+    margin-bottom:15px;
+
+    color:#eee;
+
+    font-size:19px;
+
+    line-height:1.5;
+
+}
+
+
+/* ======================================================
+   HERO BUTTONS
+====================================================== */
+
+.hero-buttons{
+
+    display:flex;
+
+    justify-content:center;
+
+    gap:20px;
+
+    flex-wrap:wrap;
+
+}
+
+.hero-btn{
+
+    padding:14px 25px;
+
+    border:none;
+
+    border-radius:12px;
+
+    font-size:17px;
+
+    font-weight:600;
+
+    cursor:pointer;
+
+    transition:.35s;
+
+}
+
+.hero-btn i{
+
+    margin-right:8px;
+
+}
+
+.hero-btn:hover{
+
+    transform:translateY(-6px);
+
+}
+
+
+/* ======================================================
+   HERO SCROLL DOTS
+====================================================== */
+
+.hero-scroll{
+
+    position:absolute;
+
+    bottom:30px;
+
+    left:50%;
+
+    transform:translateX(-50%);
+
+    display:flex;
+
+    gap:10px;
+
+    z-index:5;
+
+}
+
+.hero-scroll span{
+
+    width:12px;
+
+    height:12px;
+
+    border-radius:50%;
+
+    background:rgba(255,255,255,.45);
+
+    cursor:pointer;
+
+}
+
+
+/* ======================================================
+   SCROLL INDICATOR
+====================================================== */
+
+.scroll-indicator{
+
+    position:absolute;
+
+    bottom:20px;
+
+    left:50%;
+
+    transform:translateX(-50%);
+
+    color:#fff;
+
+    font-size:28px;
+
+    z-index:5;
+
+}
+
+
+/* ======================================================
+   HERO RESPONSIVE
+====================================================== */
+
+@media(max-width:992px){
+
+    .hero{
+
+        background-attachment:scroll;
+
+    }
+
+    .hero-container{
+
+        gap:30px;
+
+        padding:18px 8px;
+
+    }
+
+    .hero-marathi{
+
+        font-size:56px;
+
+    }
+
+    .hero-title{
+
+        font-size:72px;
+
+    }
+
+    .hero-subtitle{
+
+        font-size:30px;
+
+    }
+
+    .hero-description{
+
+        max-width:100%;
+
+        margin:20px auto 40px;
+
+    }
+
+    .hero-buttons{
+
+        flex-direction:column;
+
+        align-items:center;
+
+        width:100%;
+
+    }
+
+    .hero-btn{
+
+        width:260px;
+
+    }
+
+    .hero-right{
+
+        margin-top:20px;
+
+    }
+
+    .hero-right img{
+
+        width:90%;
+
+        max-width:450px;
+
+    }
+
+}
+
+@media(max-width:768px){
+
+    .hero{
+
+        padding:70px 0;
+
+    }
+
+    .hero-container{
+
+        gap:15px;
+
+    }
+
+    .hero-left{
+
+        width:85%;
+
+        padding:20px 15px;
+
+        border-radius:18px;
+
+    }
+
+    .hero-badge{
+
+        padding:6px 10px;
+
+        font-size:15px;
+
+    }
+
+    .hero-marathi{
+
+        font-size:42px;
+
+    }
+
+    .hero-title{
+
+        font-size:56px;
+
+    }
+
+    .hero-subtitle{
+
+        font-size:26px;
+
+    }
+
+    .hero-description{
+
+        max-width:500px;
+
+        margin:5px auto 10px;
+
+        font-size:17px;
+
+    }
+
+    .hero-buttons{
+
+        width:100%;
+
+        gap:15px;
+
+    }
+
+    .hero-btn{
+
+        width:100%;
+
+    }
+
+}
+
+@media(max-width:560px){
+
+    .hero-container{
+
+        padding:10px 6px;
+
+    }
+
+    .hero-left{
+
+        width:85%;
+
+        padding:14px 8px;
+
+    }
+
+    .hero-marathi{
+
+        font-size:34px;
+
+    }
+
+    .hero-title{
+
+        font-size:46px;
+
+    }
+
+}

@@ -1,0 +1,90 @@
+/* ======================================================
+   GLOBAL RESPONSIVE LAYOUT
+====================================================== */
+
+/* Large Desktop */
+@media (min-width:1400px){
+
+    .container{
+        max-width:1400px;
+        margin:auto;
+    }
+
+}
+
+
+/* Laptop */
+@media (max-width:1200px){
+
+    .container{
+        width:95%;
+    }
+
+}
+
+
+/* Tablet */
+@media (max-width:992px){
+
+    html{
+        font-size:95%;
+    }
+
+    .container{
+        width:96%;
+    }
+
+}
+
+
+/* Mobile */
+@media (max-width:768px){
+
+    html{
+        font-size:90%;
+    }
+
+    body{
+        overflow-x:hidden;
+    }
+
+    .container{
+        width:95%;
+    }
+
+    img{
+        max-width:100%;
+        height:auto;
+    }
+
+    button,
+    .primary-btn,
+    .secondary-btn,
+    .admin-btn{
+
+        width:100%;
+
+    }
+
+}
+
+
+/* Small Mobile */
+@media (max-width:576px){
+
+    html{
+        font-size:87.5%;
+    }
+
+}
+
+
+/* Very Small Devices */
+@media (max-width:400px){
+
+    html{
+        font-size:84%;
+    }
+
+}
+

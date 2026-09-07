@@ -1,0 +1,186 @@
+/* ==========================================
+   TOAST NOTIFICATION
+========================================== */
+
+.toast{
+
+    position:fixed;
+
+    bottom:30px;
+
+    right:30px;
+
+    background:#2E7D32;
+
+    color:#ffffff;
+
+    padding:15px 25px;
+
+    border-radius:10px;
+
+    box-shadow:0 10px 25px rgba(0,0,0,.25);
+
+    opacity:0;
+
+    visibility:hidden;
+
+    transform:translateY(20px);
+
+    transition:
+        opacity .3s ease,
+        transform .3s ease,
+        visibility .3s ease;
+
+    z-index:9999;
+
+}
+
+.toast.show{
+
+    opacity:1;
+
+    visibility:visible;
+
+    transform:translateY(0);
+
+}
+
+
+/* ==========================================
+   ERROR ALERT
+========================================== */
+
+.alert-error{
+
+    background:#FFE6E6;
+
+    color:#B30000;
+
+    border:1px solid #FFB3B3;
+
+    padding:12px 15px;
+
+    margin-bottom:20px;
+
+    border-radius:8px;
+
+    font-weight:500;
+
+}
+
+.alert-error p{
+
+    margin:0;
+
+}
+
+
+/* ==========================================
+   SUCCESS ALERT
+========================================== */
+
+.alert-success{
+
+    background:#E8F5E9;
+
+    color:#2E7D32;
+
+    border:1px solid #A5D6A7;
+
+    padding:12px 15px;
+
+    margin-bottom:20px;
+
+    border-radius:8px;
+
+    font-weight:500;
+
+}
+
+.alert-success p{
+
+    margin:0;
+
+}
+
+
+/* ==========================================
+   WARNING ALERT
+========================================== */
+
+.alert-warning{
+
+    background:#FFF8E1;
+
+    color:#F57C00;
+
+    border:1px solid #FFD54F;
+
+    padding:12px 15px;
+
+    margin-bottom:20px;
+
+    border-radius:8px;
+
+    font-weight:500;
+
+}
+
+.alert-warning p{
+
+    margin:0;
+
+}
+
+
+/* ==========================================
+   INFO ALERT
+========================================== */
+
+.alert-info{
+
+    background:#E3F2FD;
+
+    color:#1565C0;
+
+    border:1px solid #90CAF9;
+
+    padding:12px 15px;
+
+    margin-bottom:20px;
+
+    border-radius:8px;
+
+    font-weight:500;
+
+}
+
+.alert-info p{
+
+    margin:0;
+
+}
+
+
+/* ==========================================
+   RESPONSIVE
+========================================== */
+
+@media(max-width:768px){
+
+    .toast{
+
+        left:20px;
+
+        right:20px;
+
+        bottom:20px;
+
+        padding:14px 18px;
+
+        font-size:14px;
+
+    }
+
+}
+

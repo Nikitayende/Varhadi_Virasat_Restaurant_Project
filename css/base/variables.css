@@ -1,0 +1,51 @@
+/* ==========================================
+   VARIABLES
+========================================== */
+
+:root{
+
+    /* Primary */
+
+    --primary:#2E7D32;
+    --primary-dark:#1F5D28;
+
+    /* Secondary */
+
+    --gold:#D4A017;
+    --orange:#FF9933;
+
+    /* Status */
+
+    --danger:#C62828;
+    --success:#28A745;
+    --info:#2196F3;
+
+    /* Background */
+
+    --white:#ffffff;
+    --light:#fafafa;
+    --cream:#fffaf3;
+
+    /* Text */
+
+    --text:#222;
+    --text-light:#666;
+
+    /* Border */
+
+    --border:#dddddd;
+
+    /* Radius */
+
+    --radius-sm:8px;
+    --radius-md:12px;
+    --radius-lg:18px;
+    --radius-xl:24px;
+
+    /* Shadow */
+
+    --shadow-sm:0 5px 15px rgba(0,0,0,.08);
+    --shadow-md:0 10px 25px rgba(0,0,0,.12);
+    --shadow-lg:0 18px 40px rgba(0,0,0,.18);
+
+}

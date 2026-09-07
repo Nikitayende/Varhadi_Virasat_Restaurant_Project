@@ -1,0 +1,379 @@
+/* ==========================================
+   CART TABLE
+========================================== */
+
+.cart-table{
+
+    width:100%;
+
+    background:#fff;
+
+    border-collapse:collapse;
+
+    border-radius:12px;
+
+    overflow:hidden;
+
+    box-shadow:0 15px 40px rgba(0,0,0,.08);
+
+}
+
+.cart-table th{
+
+    background:#2E7D32;
+
+    color:#fff;
+
+    padding:12px;
+
+    font-size:16px;
+
+    font-weight:700;
+
+}
+
+.cart-table td{
+
+    text-align:center;
+
+    padding:12px;
+
+    border-bottom:1px solid #ddd;
+
+    font-size:14px;
+
+}
+
+.cart-table img{
+
+    width:100px;
+
+    height:100px;
+
+    object-fit:cover;
+
+    border-radius:18px;
+
+    box-shadow:0 10px 25px rgba(0,0,0,.15);
+
+}
+
+.cart-table td strong{
+
+    margin:0 3px;
+
+    font-size:16px;
+
+}
+
+
+/* ==========================================
+   ADMIN TABLE
+========================================== */
+
+.admin-table{
+
+    width:100%;
+
+    border-collapse:collapse;
+
+}
+
+.admin-table th{
+
+    background:#2E7D32;
+
+    color:#fff;
+
+    padding:15px;
+
+}
+
+.admin-table td{
+
+    padding:15px;
+
+    text-align:center;
+
+    border-bottom:1px solid #ddd;
+
+}
+
+.admin-table tr:hover{
+
+    background:#fafafa;
+
+}
+
+.admin-table select{
+
+    padding:8px;
+
+    border-radius:6px;
+
+}
+
+
+/* ==========================================
+   RESERVATION TABLE
+========================================== */
+
+.reservation-table{
+
+    width:100%;
+
+    border-collapse:collapse;
+
+    table-layout:fixed;
+
+}
+
+.reservation-table th{
+
+    background:#2E7D32;
+
+    color:#fff;
+
+    padding:15px;
+
+}
+
+.reservation-table td{
+
+    padding:15px;
+
+    text-align:center;
+
+    border-bottom:1px solid #ddd;
+
+    vertical-align:middle;
+
+}
+
+.reservation-table tbody tr:hover{
+
+    background:#fafafa;
+
+}
+
+
+/* Column Widths */
+
+.reservation-table th:nth-child(1),
+.reservation-table td:nth-child(1){
+
+    width:6%;
+
+}
+
+.reservation-table th:nth-child(2),
+.reservation-table td:nth-child(2){
+
+    width:18%;
+
+}
+
+.reservation-table th:nth-child(3),
+.reservation-table td:nth-child(3){
+
+    width:15%;
+
+}
+
+.reservation-table th:nth-child(4),
+.reservation-table td:nth-child(4){
+
+    width:13%;
+
+}
+
+.reservation-table th:nth-child(5),
+.reservation-table td:nth-child(5){
+
+    width:10%;
+
+}
+
+.reservation-table th:nth-child(6),
+.reservation-table td:nth-child(6){
+
+    width:8%;
+
+}
+
+.reservation-table th:nth-child(7),
+.reservation-table td:nth-child(7){
+
+    width:14%;
+
+}
+
+.reservation-table th:nth-child(8),
+.reservation-table td:nth-child(8){
+
+    width:16%;
+
+}
+
+
+/* ==========================================
+   INVOICE TABLE
+========================================== */
+
+.invoice-table{
+
+    width:100%;
+
+    border-collapse:collapse;
+
+    margin-top:20px;
+
+}
+
+.invoice-table th{
+
+    background:#2E7D32;
+
+    color:#fff;
+
+    padding:12px;
+
+}
+
+.invoice-table td{
+
+    padding:12px;
+
+    text-align:center;
+
+    border-bottom:1px solid #ddd;
+
+}
+
+
+/* ==========================================
+   QR TABLE GRID
+========================================== */
+
+.table-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(auto-fill,minmax(320px,1fr));
+
+    gap:25px;
+
+    margin-top:30px;
+
+}
+
+.table-buttons{
+
+    display:flex;
+
+    justify-content:center;
+
+    gap:10px;
+
+    flex-wrap:wrap;
+
+    margin-top:15px;
+
+}
+
+.table-buttons button{
+
+    width:100px;
+
+    height:38px;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    gap:5px;
+
+    font-size:14px;
+
+    border:none;
+
+    border-radius:6px;
+
+    cursor:pointer;
+
+}
+
+
+/* ==========================================
+   RESPONSIVE
+========================================== */
+
+@media (max-width:768px){
+
+    .reservation-table{
+
+        display:block;
+
+        width:100%;
+
+        overflow-x:auto;
+
+        white-space:nowrap;
+
+        -webkit-overflow-scrolling:touch;
+
+    }
+
+    .reservation-table thead{
+
+        display:table-header-group;
+
+    }
+
+    .reservation-table tbody{
+
+        display:table-row-group;
+
+    }
+
+    .reservation-table tr{
+
+        display:table-row;
+
+    }
+
+    .reservation-table th,
+    .reservation-table td{
+
+        min-width:130px;
+
+        padding:14px 10px;
+
+        font-size:14px;
+
+    }
+
+    .reservation-table th:nth-child(1),
+    .reservation-table td:nth-child(1){
+
+        min-width:60px;
+
+    }
+
+    .reservation-table th:nth-child(2),
+    .reservation-table td:nth-child(2){
+
+        min-width:160px;
+
+    }
+
+    .reservation-table th:nth-child(8),
+    .reservation-table td:nth-child(8){
+
+        min-width:180px;
+
+    }
+
+}

@@ -1,0 +1,395 @@
+/* ================= INVOICE ================= */
+
+.invoice{
+
+    width:530px;
+
+    max-width:80%;
+
+    margin:14px auto;
+
+    box-shadow:0 8px 25px rgba(0,0,0,.15);
+
+    border-radius:12px;
+
+    overflow:visible;
+
+}
+
+/* ================= HEADER ================= */
+
+.invoice-header-img{
+
+    width:100%;
+
+    display:block;
+
+    height: 190px;
+
+}
+
+/* ================= BODY ================= */
+
+.invoice-body{
+
+    background:url("../images/invoice/invoice_body.png") repeat-y center;
+
+    background-size:100% auto;
+
+    padding:15px 20px;
+
+}
+
+/* ================= INFO ================= */
+
+.invoice-info{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    gap:15px;
+
+    padding:10px 15px;
+
+    border:2px solid #caa96b;
+
+    border-radius:12px;
+
+    background:rgba(255,255,255,.78);
+
+    margin-bottom:5px;
+
+}
+
+.invoice-info p{
+
+    margin:3px 0;
+
+    font-size:12px;
+
+    color:#333;
+
+}
+
+.invoice-info strong{
+
+    color:#2e5d31;
+
+}
+
+/* ================= TABLE ================= */
+
+.bill-table{
+
+    width:100%;
+
+    border-collapse:collapse;
+
+    margin-top:10px;
+
+    background:rgba(255,255,255,.45);
+
+}
+
+.bill-table th{
+
+    background:#2d6a34;
+
+    color:white;
+
+    padding:5px;
+
+    font-size:12px;
+
+    letter-spacing:.5px;
+
+}
+
+.bill-table td{
+
+    padding:5px 4px;
+
+    text-align:center;
+
+    border-bottom:1px solid #ddd;
+
+    font-size:11px;
+
+}
+
+.bill-table tr:nth-child(even){
+
+    background:rgba(240,240,240,.45);
+
+}
+
+.bill-table tr:hover{
+
+    background:rgba(198,220,188,.45);
+
+}
+
+
+.bill-table{
+
+    table-layout:fixed;
+
+}
+
+.bill-table td{
+
+    word-wrap:break-word;
+
+    overflow-wrap:break-word;
+
+}
+
+.bill-table th:nth-child(1),
+.bill-table td:nth-child(1){
+
+    width:40%;
+
+    text-align:left;
+
+}
+
+.bill-table th:nth-child(2),
+.bill-table td:nth-child(2){
+
+    width:10%;
+
+}
+
+.bill-table th:nth-child(3),
+.bill-table td:nth-child(3){
+
+    width:18%;
+
+}
+
+.bill-table th:nth-child(4),
+.bill-table td:nth-child(4){
+
+    width:18%;
+
+}
+
+.payment-section{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-top:15px;
+    padding-top:10px;
+    border-top:2px dashed #caa96b;
+}
+
+.payment-qr{
+    width:100px;
+    height:auto;
+}
+
+.payment-right{
+    text-align:right;
+}
+
+.payment-right h4{
+    color:#2d6a34;
+    margin-bottom:4px;
+    font-size: 12px;
+}
+
+.payment-right p{
+    color:#555;
+    line-height:1.6;
+    font-size: 12px;
+}
+
+
+/* ================= TOTAL ================= */
+
+.bill-total{
+
+    width:260px;
+
+    margin:12px 0 0 auto;
+
+    padding:7px;
+
+    border-radius:12px;
+
+    background:rgba(255,255,255,.62);
+
+    border:2px solid #caa96b;
+
+}
+
+.bill-total p{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    margin:5px 0;
+
+    font-size:10px;
+
+}
+
+.bill-total h4{
+
+    margin:5px 0 0;
+
+    color:#1f5d28;
+
+    text-align:right;
+
+    font-size:12px;
+
+}
+
+/* ================= BUTTONS ================= */
+
+.bill-buttons{
+
+    display:flex;
+
+    justify-content:center;
+
+    gap:20px;
+
+    margin-top:15px;
+
+}
+
+.bill-buttons button{
+
+    width:120px;
+
+    padding:6px 14px;
+
+    border:none;
+
+    border-radius:8px;
+
+    background:#2d6a34;
+
+    color:white;
+
+    font-size:13px;
+
+    font-weight:520;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+}
+
+.bill-buttons button:hover{
+
+    background:#1b4b20;
+
+    transform:translateY(-2px);
+
+}
+
+/* ================= FOOTER ================= */
+
+.invoice-footer-img{
+
+    display:block;
+
+    width:100%;
+
+    margin-top:-5px;
+
+}
+
+/* ====================================== */
+
+.invoice{
+
+    page-break-after:always;
+
+}
+
+.invoice:last-child{
+
+    page-break-after:auto;
+
+}
+
+
+@media print{
+
+    .bill-buttons{
+        display:none !important;
+    }
+
+    header,
+    nav,
+    footer{
+        display:none !important;
+    }
+
+    body{
+        background:white !important;
+    }
+
+    .invoice{
+        width:90%;
+        max-width:90%;
+        margin:0;
+        box-shadow:none;
+    }
+
+    .invoice-header-img{
+        width:90%;
+    }
+
+    .invoice-body{
+        background:white;
+        padding:12px 14px;
+    }
+
+    .invoice-footer-img{
+        display:none;
+    }
+
+}
+
+
+
+/* Desktop / Large Screens Only */
+@media (min-width: 992px) {
+
+    body{
+        padding-top: 90px;
+    }
+
+    .invoice{
+        margin-top: 20px;
+    }
+
+}
+
+
+/* Invoice page only */
+footer,
+.whatsapp-float,
+.whatsapp-btn{
+    display: none !important;
+}
+
+
+
+
+
+
+
+
+
+
+
+
