@@ -1,0 +1,616 @@
+
+
+    Varhadi Virasat Restaurant Management System
+      
+                    USER
+                      │
+                      ▼
+              Browser (Chrome)
+                      │
+                      ▼
+         HTML + CSS + JavaScript
+                      │
+                      ▼
+              Flask (app.py)
+                      │
+      ┌───────────────┼────────────────┐
+      │               │                │
+      ▼               ▼                ▼
+   Menu.py      Orders.py      Reservations.py
+      │               │                │
+      └───────────────┼────────────────┘
+                      │
+                      ▼
+                 SQLite Database
+                      │
+      ┌───────────────┼────────────────┐
+      │               │                │
+      ▼               ▼                ▼
+ Menu Items      Orders        Reservations
+                      │
+                      ▼
+                 Invoice System
+
+--------------------------------------------------------------------
+
+
+    COMPLETE PROJECT STRUCTURE
+
+Varhadi-Virasat/
+│
+├── app.py
+├── create_db.py
+├── import_menu.py
+├── update_db.py
+├── update_tables_db.py
+├── generate_qr.py
+├── insert_tables.py
+├── resize_images.py
+├── check_reservations.py
+│
+├── routes/
+│      │
+│      ├── admin.py
+│      ├── menu.py
+│      ├── orders.py
+│      ├── reservations.py
+│      └── table.py
+│
+├── database.db
+│
+├── templates/
+│
+│      base.html
+│      index.html
+│      menu.html
+│      cart.html
+│      checkout.html
+│
+│      reservation.html
+│      reservation_success.html
+│
+│      success.html
+│      invoice.html
+│      print_invoice.html
+│      track_order.html
+│
+│      admin.html
+│      dashboard.html
+│      login.html
+│
+│      manage_menu.html
+│      add_dish.html
+│      edit_dish.html
+│
+│      manage_reservations.html
+│
+│      manage_tables.html
+│      add_table.html
+│      view_qr.html
+│
+│      orders.html
+│      order_details.html
+│
+├── static/
+│
+│      css/
+│           style.css
+│           invoice.css
+│           print_invoice.css
+│
+│      js/
+│           script.js
+│
+│      images/
+│           hero/
+│           dishes/
+│           gallery/
+│           customers/
+│           logo/
+│           payment_qr/
+│           invoice/
+│           table_qr/
+
+
+----------------------------------------------------------------------
+
+    WEBSITE FLOW
+
+HOME 
+↓
+MENU
+↓
+CATEGORY FILTER
+↓
+SEARCH
+↓
+QUICK VIEW
+↓
+ADD TO CART
+↓
+CART
+↓
+CHECKOUT
+↓
+ORDER SUCCESS
+↓
+INVOICE
+↓
+TRACK ORDER
+
+-----------------------------------------------------------------------
+
+    TABLE QR FLOW
+
+Restaurant Table
+↓
+QR Code
+↓
+Scan
+↓
+/table/5
+↓
+Menu
+↓
+Cart
+↓
+Checkout
+↓
+Kitchen
+
+-------------------------------------------------------------------------
+
+    CUSTOMER FLOW
+
+Visitor
+↓
+Home
+↓
+View Menu
+↓
+Add Dish
+↓
+Cart
+↓
+Checkout
+↓
+Payment
+↓
+Invoice
+↓
+Track Order
+↓
+Completed
+
+--------------------------------------------------------------------------
+
+    RESERVATION FLOW
+
+Home
+↓
+Reserve Table
+↓
+Reservation Form
+↓
+Database
+↓
+Reservation Success
+↓
+Admin
+↓
+Confirmation
+↓
+Completed
+
+-------------------------------------------------------------------------
+
+    ADMIN FLOW
+
+Admin Login
+↓
+Dashboard
+├──────────────┐
+│              │
+│              │
+▼              ▼
+Manage Menu
+Add Dish
+Edit Dish
+Delete Dish
+↓
+Orders
+↓
+Reservations
+↓
+QR Tables
+↓
+Sales Dashboard
+
+--------------------------------------------------------------------------
+
+    FLASK ARCHITECTURE
+
+app.py
+│
+├── Home
+├── Menu
+├── Cart
+├── Checkout
+├── Invoice
+├── Reservation
+├── Admin
+├── Login
+├── Orders
+├── QR Tables
+└── Tracking
+
+-------------------------------------------------------------------------
+
+    ROUTES
+
+app.py
+│
+├── /
+├── /menu
+├── /cart
+├── /checkout
+├── /success
+├── /invoice/<id>
+├── /track_order/<id>
+├── /reservation
+├── /save_reservation
+├── /admin
+├── /dashboard
+├── /manage_menu
+├── /manage_reservations
+├── /manage_tables
+└── /table/<id>
+
+------------------------------------------------------------------------
+
+    DATABASE
+
+SQLite
+│
+├── menu_items
+├── cart
+├── orders
+├── order_items
+├── reservations
+├── restaurant_tables
+└── admins
+
+------------------------------------------------------------------------
+
+    DATABASE RELATIONSHIP
+
+Menu
+   │
+   │
+   ▼
+Cart
+   │
+   ▼
+Orders
+   │
+   ▼
+Order Items
+
+Restaurant Tables
+      │
+      ▼
+Orders
+
+Reservations
+      │
+      ▼
+Dashboard
+
+-----------------------------------------------------------------------
+
+    HTML ARCHITECTURE
+
+base.html
+│
+├── Navbar
+├── Footer
+├── WhatsApp
+├── Scroll Button
+├── Toast
+├── Preloader
+└── {% block content %}
+
+Every page extends:
+    base.html
+------------------------------------------------------------------------
+
+    HOME PAGE
+
+Navbar
+↓
+Hero Slider
+↓
+Counters
+↓
+Categories
+↓
+Chef Special
+↓
+Why Choose Us
+↓
+Gallery
+↓
+Reservation CTA
+↓
+Testimonials
+↓
+Footer
+
+-----------------------------------------------------------------------
+
+    MENU PAGE
+
+Navbar
+↓
+Category Buttons
+↓
+Search
+↓
+Menu Cards
+↓
+Quick View
+↓
+Add to Cart
+↓
+Floating Cart
+↓
+Footer
+
+------------------------------------------------------------------------
+
+    CART PAGE
+
+Cart Table
+↓
+Quantity
+↓
+Subtotal
+↓
+GST
+↓
+Grand Total
+↓
+Continue
+↓
+Checkout
+
+------------------------------------------------------------------------
+
+    CHECKOUT
+
+Customer Details
+↓
+Order Type
+↓
+Table Selection
+↓
+Place Order
+
+------------------------------------------------------------------------
+
+    SUCCESS
+
+Success
+↓
+Invoice
+↓
+Print
+↓
+Home
+
+-----------------------------------------------------------------------
+
+    ADMIN
+
+Dashboard
+↓
+Statistics
+↓
+Charts
+↓
+Orders
+↓
+Reservations
+↓
+Menu
+↓
+Tables
+
+------------------------------------------------------------------------
+
+    CSS ARCHITECTURE
+
+style.css
+│
+├── Global
+├── Preloader
+├── Navbar
+├── Hero
+├── Counters
+├── Categories
+├── Featured
+├── Premium Cards
+├── Why Choose Us
+├── Gallery
+├── Reservation
+├── Testimonials
+├── Menu
+├── Cart
+├── Checkout
+├── Admin
+├── Dashboard
+├── QR
+├── Footer
+├── Responsive
+└── Animations
+
+-----------------------------------------------------------------------
+
+    JAVASCRIPT
+
+script.js
+│
+├── Hero Slider
+├── Hero Animation
+├── Hero Parallax
+├── Search
+├── Category Filter
+├── AJAX Cart
+├── Floating Cart
+├── Toast
+├── Scroll Reveal
+├── Testimonial Slider
+├── Lightbox
+├── Navbar
+├── Mobile Menu
+├── Quick View
+├── Scroll Top
+├── Preloader
+└── Table Toggle
+
+------------------------------------------------------------------------
+
+    INVOICE SYSTEM
+
+Order
+↓
+Database
+↓
+Invoice.html
+↓
+Print Invoice
+↓
+PDF
+
+------------------------------------------------------------------------
+
+    QR SYSTEM
+
+generate_qr.py
+↓
+QR Images
+↓
+Scan
+↓
+table/<id>
+↓
+Menu
+
+------------------------------------------------------------------------
+
+    ADMIN MODULES
+
+Dashboard
+│
+├── Orders
+├── Reservations
+├── Menu
+├── QR Tables
+├── Sales
+├── Analytics
+└── Login
+
+------------------------------------------------------------------------
+
+    IMAGE STRUCTURE
+
+images/
+│
+├── hero/
+├── dishes/
+├── gallery/
+├── customers/
+├── invoice/
+├── payment_qr/
+├── table_qr/
+└── logo/
+
+------------------------------------------------------------------------
+
+    MAIN COMPONENT RELATIONSHIP
+
+HTML
+ │
+ ▼
+CSS
+ │
+ ▼
+JavaScript
+ │
+ ▼
+Flask
+ │
+ ▼
+Python Routes
+ │
+ ▼
+SQLite
+ │
+ ▼
+HTML Response
+
+-----------------------------------------------------------------------
+
+    OVERALL PROJECT FLOW
+
+                    Browser
+                        │
+                        ▼
+                  base.html
+                        │
+        ┌───────────────┼───────────────┐
+        ▼               ▼               ▼
+    Home Page       Menu Page      Admin Panel
+        │               │               │
+        ▼               ▼               ▼
+    script.js      AJAX Cart      Dashboard
+        │               │               │
+        └───────────────┼───────────────┘
+                        ▼
+                    Flask App
+                        │
+        ┌───────────────┼───────────────┐
+        ▼               ▼               ▼
+     Menu.py       Orders.py     Reservations.py
+                        │
+                        ▼
+                  SQLite Database
+                        │
+                        ▼
+                  HTML Templates
+                        │
+                        ▼
+                    Browser
+
+-----------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
