@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+
+{% block title %}Order Successful{% endblock %}
+
+{% block content %}
+
+<section class="success-page">
+
+    <div class="success-card">
+
+        <div class="success-icon">
+            🎉
+        </div>
+
+        <h1>Order Placed Successfully!</h1>
+
+        <p class="success-text">
+            Thank you for ordering from
+            <strong>Varhadi Virasat</strong>
+        </p>
+
+        <div class="order-info">
+            Order ID :
+            <strong>#{{ order_id }}</strong>
+        </div>
+
+        <div class="success-buttons">
+
+            <a href="{{ url_for('invoice', order_id=order_id) }}"
+               class="success-btn blue">
+
+                <i class="bi bi-eye-fill"></i>
+                View Invoice
+
+            </a>
+
+            <a href="{{ url_for('print_invoice', order_id=order_id) }}"
+               class="success-btn green">
+
+                <i class="bi bi-printer-fill"></i>
+                Print / Save PDF
+
+            </a>
+
+            <a href="{{ url_for('track_order', order_id=order_id) }}"
+               class="success-btn orange">
+
+                <i class="bi bi-truck"></i>
+                Track Order
+
+            </a>
+
+            <a href="{{ url_for('home') }}"
+               class="success-btn dark">
+
+                <i class="bi bi-house-door-fill"></i>
+                Back to Home
+
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+{% endblock %}

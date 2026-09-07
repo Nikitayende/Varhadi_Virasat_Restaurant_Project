@@ -1,0 +1,235 @@
+{% extends "base.html" %}
+
+{% block head %}
+<link rel="stylesheet"
+href="{{ url_for('static', filename='css/invoice.css') }}">
+{% endblock %}
+
+{% block content %}
+
+{% set subtotal = namespace(value=0) %}
+
+{% for page in pages %}
+
+<section class="invoice">
+
+    <!-- Header -->
+
+    <img
+    src="{{ url_for('static', filename='images/invoice/invoice_header.png') }}"
+    class="invoice-header-img">
+
+    <div class="invoice-body">
+
+        <!-- Show invoice info only on first page -->
+
+        {% if loop.first %}
+
+        <div class="invoice-info">
+
+            <div>
+
+                <p><strong>Invoice No :</strong> #{{ order.id }}</p>
+
+                <p><strong>Date :</strong> {{ current_date }}</p>
+
+                <p><strong>Time :</strong> {{ current_time }}</p>
+
+                <p><strong>Payment :</strong> {{ order.payment_method }}</p>
+
+                <p><strong>Bill Type :</strong> {{ order.order_type }}</p>
+
+                <p><strong>Phone :</strong> {{ order.phone }}</p>
+
+            </div>
+
+            <div>
+
+                <p><strong>Customer :</strong> {{ order.customer_name }}</p>
+
+                {% if order.order_type == "Takeaway" %}
+
+                <p><strong>Table :</strong> -</p>
+
+                {% else %}
+
+                <p><strong>Table :</strong> {{ order.table_number }}</p>
+
+                {% endif %}
+
+                <p><strong>Status :</strong> {{ order.status }}</p>
+
+            </div>
+
+        </div>
+
+        {% endif %}
+
+        <table class="bill-table">
+
+            <thead>
+
+                <tr>
+
+                    <th>Dish</th>
+
+                    <th>Qty</th>
+
+                    <th>Price</th>
+
+                    <th>Total</th>
+
+                </tr>
+
+            </thead>
+
+            <tbody>
+
+            {% for item in page %}
+
+            {% set line_total = item.quantity * item.price %}
+            {% set subtotal.value = subtotal.value + line_total %}
+
+            <tr>
+
+                <td>{{ item.dish_name }}</td>
+
+                <td>{{ item.quantity }}</td>
+
+                <td>₹{{ item.price }}</td>
+
+                <td>₹{{ line_total }}</td>
+
+            </tr>
+
+            {% endfor %}
+
+            </tbody>
+
+        </table>
+
+        <!-- Only on last page -->
+
+        {% if loop.last %}
+
+        <div class="bill-total">
+
+            <p>
+
+                <span>Sub total</span>
+
+                <span>₹{{ subtotal.value }}</span>
+
+            </p>
+
+            <p>
+
+                <span>GST (5%)</span>
+
+                <span>₹{{ "%.2f"|format(subtotal.value * 0.05) }}</span>
+
+            </p>
+
+            <hr>
+
+            <h4>
+
+                Grand Total
+
+                ₹{{ "%.2f"|format(subtotal.value * 1.05) }}
+
+            </h4>
+
+        </div>
+
+    
+        <!-- Payment & Thank You -->
+
+        
+        <div class="payment-section">
+
+            <div class="payment-left">
+
+                <h4>Scan & Pay</h4>
+
+                <img
+                src="{{ url_for('static', filename='images/payment_qr/payment_qr1.png') }}"
+                class="payment-qr">
+
+                <p><strong>UPI ID</strong></p>
+
+                <p>varhadivirasat@upi</p>
+
+                <small>
+                    Google Pay • PhonePe • Paytm • BHIM
+                </small>
+
+            </div>
+
+            <div class="payment-right">
+
+                <h4>Thank You!</h4>
+
+                <p>
+                    We appreciate your visit.<br>
+                    Hope to serve you again.
+                </p>
+
+            </div>
+
+        </div>
+
+        
+        <!-- ================= BUTTONS ================= -->
+
+    <div class="bill-buttons">
+            
+        <a href="/print_invoice/{{ order.id }}" target="_blank">
+
+            <button type="button">
+
+                🖨 Print Bill
+
+            </button>
+
+        </a>
+
+        <a href="/success?order_id={{ order.id }}">
+
+            <button type="button">
+
+                ⬅ Back
+
+            </button>
+
+        </a>
+
+    </div>
+
+        {% endif %}
+
+    </div>
+
+    <!-- Footer -->
+
+    {% if loop.last %}
+
+    <img
+    src="{{ url_for('static', filename='images/invoice/invoice_footer.png') }}"
+    class="invoice-footer-img print-footer"
+    alt="Invoice Footer">
+
+    {% endif %}
+
+</section>
+
+{% endfor %}
+
+
+
+{% endblock %}
+
+
+
+
+

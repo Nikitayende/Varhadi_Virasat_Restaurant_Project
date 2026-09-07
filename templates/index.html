@@ -1,0 +1,603 @@
+{% extends "base.html" %}
+
+{% block title %}
+
+Home | Varhadi Virasat
+
+{% endblock %}
+
+{% block content %}
+
+<!-- ================= HERO ================= -->
+
+<section class="hero reveal">
+
+    <div class="hero-bg hero-bg-1"></div>
+    <div class="hero-bg hero-bg-2"></div>
+
+    <div class="hero-overlay"></div>
+
+    <div class="hero-container">
+
+        <div class="hero-left">
+
+            <span class="hero-badge">
+                🌿 100% Pure Vegetarian
+            </span>
+
+            <h2 class="hero-marathi">
+                वरहाडी
+            </h2>
+
+            <h1 class="hero-title">
+                विरासत
+            </h1>
+
+            <h3 class="hero-subtitle">
+                Tradition Served Fresh
+            </h3>
+
+            <p class="hero-description">
+
+                Experience the authentic taste of
+                Varhadi, Maharashtrian, Chinese,
+                and Fast Food delicacies made
+                with fresh ingredients and
+                traditional recipes.
+
+            </p>
+
+            <div class="hero-buttons">
+
+                <a href="/menu">
+
+                    <button class="hero-btn primary-btn">
+
+                        <i class="bi bi-grid-fill"></i>
+
+                        View Menu
+
+                    </button>
+
+                </a>
+
+                <a href="/reservation">
+
+                    <button class="hero-btn secondary-btn">
+
+                        <i class="bi bi-calendar-check"></i>
+
+                        Reserve Table
+
+                    </button>
+
+                </a>
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+    <div class="hero-scroll">
+
+        <span></span>
+
+        <span></span>
+
+        <span></span>
+
+    </div>
+
+    <div class="scroll-indicator">
+        <i class="bi bi-chevron-double-down"></i>
+    </div>
+
+</section>
+
+<!-- ================= POPULAR CATEGORIES ================= -->
+
+
+<section class="featured-categories reveal">
+
+    <h2>Our Specialties</h2>
+
+    <p>
+        Discover the best of Varhadi Virasat
+    </p>
+
+    <div class="category-grid">
+
+        <div class="category-card">
+
+            <img src="{{ url_for('static', filename='images/dishes/varhadi_thali.jpeg') }}">
+
+            <h3>Varhadi Specials</h3>
+
+        </div>
+
+        <div class="category-card">
+
+            <img src="{{ url_for('static', filename='images/dishes/paneer_butter_masala.jpeg') }}">
+
+            <h3>Paneer Delights</h3>
+
+        </div>
+
+        <div class="category-card">
+
+            <img src="{{ url_for('static', filename='images/dishes/veg_manchurian.jpeg') }}">
+
+            <h3>Chinese</h3>
+
+        </div>
+
+        <div class="category-card">
+
+            <img src="{{ url_for('static', filename='images/dishes/margherita_pizza.jpeg') }}">
+
+            <h3>Pizza</h3>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- ================= WHY CHOOSE US ================= -->
+
+<section class="why-modern reveal">
+
+    <div class="section-title">
+
+        <span>Why Choose Us</span>
+
+        <h2>Experience the Taste of Tradition</h2>
+
+        <p>
+            Authentic flavors, premium hospitality, and unforgettable dining.
+        </p>
+
+    </div>
+
+    <div class="why-modern-grid">
+
+        <div class="why-modern-card">
+
+            <div class="why-icon">
+                🥬
+            </div>
+
+            <h3>100% Pure Vegetarian</h3>
+
+            <p>
+                Every dish is prepared in a dedicated vegetarian kitchen with
+                fresh vegetables and premium ingredients.
+            </p>
+
+        </div>
+
+        <div class="why-modern-card">
+
+            <div class="why-icon">
+                👨‍🍳
+            </div>
+
+            <h3>Authentic Recipes</h3>
+
+            <p>
+                Prepared by experienced chefs using traditional
+                Maharashtrian and Varhadi recipes.
+            </p>
+
+        </div>
+
+        <div class="why-modern-card">
+
+            <div class="why-icon">
+                🍃
+            </div>
+
+            <h3>Fresh Ingredients</h3>
+
+            <p>
+                We use farm-fresh vegetables, aromatic spices,
+                and quality ingredients every day.
+            </p>
+
+        </div>
+
+        <div class="why-modern-card">
+
+            <div class="why-icon">
+                ❤️
+            </div>
+
+            <h3>Family Friendly</h3>
+
+            <p>
+                Spacious seating, warm hospitality,
+                and a comfortable atmosphere for everyone.
+            </p>
+
+        </div>
+
+        <div class="why-modern-card">
+
+            <div class="why-icon">
+                🚚
+            </div>
+
+            <h3>Fast Service</h3>
+
+            <p>
+                Quick preparation and hygienic serving without
+                compromising the authentic taste.
+            </p>
+
+        </div>
+
+        <div class="why-modern-card">
+
+            <div class="why-icon">
+                ⭐
+            </div>
+
+            <h3>Top Rated</h3>
+
+            <p>
+                Loved by thousands of customers for our
+                delicious food and excellent service.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ================= GALLERY ================= -->
+
+<section class="gallery-section reveal">
+
+    <div class="section-title">
+        <span>Gallery</span>
+        <h2>Discover Varhadi Virasat</h2>
+        <p>Traditional ambience, delicious food and unforgettable moments.</p>
+    </div>
+
+    <div class="gallery-grid">
+
+        <div class="gallery-item">
+            <img src="{{ url_for('static', filename='images/gallery/hero_outside.jpg') }}">
+        </div>
+
+        <div class="gallery-item large">
+            <img src="{{ url_for('static', filename='images/gallery/hero_dinning.jpg') }}">
+        </div>
+
+        <div class="gallery-item">
+            <img src="{{ url_for('static', filename='images/gallery/restro2.jpeg') }}">
+        </div>
+
+        <div class="gallery-item">
+            <img src="{{ url_for('static', filename='images/gallery/restro3.jpeg') }}">
+        </div>
+
+        <div class="gallery-item">
+            <img src="{{ url_for('static', filename='images/gallery/hero_kitchen.jpg') }}">
+        </div>
+
+        <div class="gallery-item">
+            <img src="{{ url_for('static', filename='images/gallery/hero_kitchen2.jpg') }}">
+        </div>
+
+        <div class="gallery-item large">
+            <img src="{{ url_for('static', filename='images/gallery/hero_terrace1.jpg') }}">
+        </div>
+
+        <div class="gallery-item">
+            <img src="{{ url_for('static', filename='images/gallery/hero_terrace2.jpg') }}">
+        </div>
+
+        <div class="gallery-item">
+            <img src="{{ url_for('static', filename='images/gallery/hero_garden1.jpg') }}">
+        </div>
+
+        <div class="gallery-item">
+            <img src="{{ url_for('static', filename='images/gallery/hero_park1.jpg') }}">
+        </div>
+
+    </div>
+
+</section>
+
+<!-- LIGHTBOX -->
+
+<div id="lightbox">
+
+    <span id="closeLightbox">&times;</span>
+
+    <img id="lightboxImage">
+
+</div>
+
+<!-- ================= RESERVATION CTA ================= -->
+
+<section class="reservation-home reveal">
+
+    <div class="reservation-overlay">
+
+        <div class="reservation-box">
+
+            <span>Reserve Your Table</span>
+
+            <h2>Book A Memorable Dining Experience</h2>
+
+            <p>
+                Enjoy authentic Varhadi cuisine with your family and friends.
+                Reserve your table now for a hassle-free experience.
+            </p>
+
+            <a href="/reservation">
+
+                <button class="reservation-btn">
+
+                    📅 Book Table Now
+
+                </button>
+
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<section class="chef-special reveal">
+
+    <div class="section-title">
+
+        <h2>Chef's Recommendations</h2>
+
+        <p>
+
+            Our most loved dishes.
+
+        </p>
+
+    </div>
+
+    <div class="premium-menu-grid">
+
+        {% for item in special_dishes %}
+
+        <div class="premium-card">
+
+            <div class="premium-image">
+
+                <img
+                src="{{ url_for('static',
+                filename='images/dishes/' + item.image) }}"
+                alt="{{ item.dish_name }}">
+
+                <span class="premium-badge">
+
+                    ⭐ Chef's Choice
+
+                </span>
+
+            </div>
+
+            <div class="premium-content">
+
+                <h3>
+
+                    {{ item.dish_name }}
+
+                </h3>
+
+                <p>
+
+                    {{ item.description }}
+
+                </p>
+
+                <div class="premium-rating">
+
+                    ★★★★★
+
+                    <span>(4.9)</span>
+
+                </div>
+
+                <div class="premium-bottom">
+
+                    <div>
+
+                        <small>Starting From</small>
+
+                        <h2>₹{{ item.price }}</h2>
+
+                    </div>
+
+                    <button
+                        class="premium-cart"
+                        data-name="{{ item.dish_name }}"
+                        data-price="{{ item.price }}"
+                        data-image="{{ url_for('static', filename='images/dishes/' + item.image) }}"
+                        onclick="addToCart(
+                            this.dataset.name,
+                            this.dataset.price,
+                            this.dataset.image,
+                            this
+                        )">
+
+                        <i class="bi bi-cart-plus-fill"></i>
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        {% endfor %}
+
+    </div>
+
+</section>
+
+<!-- ================= COUNTERS ================= -->
+
+<section class="counter-section reveal">
+
+    <div class="counter-box">
+
+        <i class="bi bi-egg-fried"></i>
+
+        <h2 class="counter" data-target="140">140+</h2>
+
+        <p>Dishes Served</p>
+
+    </div>
+
+    <div class="counter-box">
+
+        <i class="bi bi-people-fill"></i>
+
+        <h2 class="counter" data-target="5000">+</h2>
+
+        <p>Happy Customers</p>
+
+    </div>
+
+    <div class="counter-box">
+
+        <i class="bi bi-star-fill"></i>
+
+        <h2>4.9 ★</h2>
+
+        <p>Customer Rating</p>
+
+    </div>
+
+    <div class="counter-box">
+
+        <i class="bi bi-award-fill"></i>
+
+        <h2 class="counter" data-target="15">10+</h2>
+
+        <p>Expert Chefs</p>
+
+    </div>
+
+</section>
+
+
+<!-- ================= TESTIMONIALS ================= -->
+
+<section class="testimonials reveal">
+
+    <div class="section-title">
+
+        <span>Testimonials</span>
+
+        <h2>What Our Customers Say</h2>
+
+        <p>
+            Loved by families, food lovers and visitors from across Maharashtra.
+        </p>
+
+    </div>
+
+    <div class="testimonial-slider">
+
+        <div class="testimonial active">
+
+            <div class="testimonial-avatar">
+                <img src="{{ url_for('static', filename='images/customers/customer1.jpg') }}" alt="Customer">
+            </div>
+            
+            <h3>Rahul Sharma</h3>
+
+            <div class="stars">
+                ★★★★★
+            </div>
+
+            <p>
+
+                Amazing Varhadi Thali.
+                Authentic taste and excellent service.
+                Definitely recommended.
+
+            </p>
+
+        </div>
+
+        <div class="testimonial">
+
+             <div class="testimonial-avatar">
+                <img src="{{ url_for('static', filename='images/customers/customer2.jpg') }}" alt="Customer">
+            </div>
+            
+            <h3>Priya Patil</h3>
+
+            <div class="stars">
+                ★★★★★
+            </div>
+
+            <p>
+
+                Beautiful ambience,
+                delicious food,
+                and very polite staff.
+
+            </p>
+
+        </div>
+
+        <div class="testimonial">
+
+             <div class="testimonial-avatar">
+                <img src="{{ url_for('static', filename='images/customers/customer3.jpg') }}" alt="Customer">
+            </div>
+            
+            <h3>Amit Verma</h3>
+
+            <div class="stars">
+                ★★★★★
+            </div>
+
+            <p>
+
+                One of the best vegetarian restaurants
+                in Nagpur.
+                We'll definitely visit again.
+
+            </p>
+
+        </div>
+
+    </div>
+
+    <div class="testimonial-dots">
+
+        <span class="dot active"></span>
+
+        <span class="dot"></span>
+
+        <span class="dot"></span>
+
+    </div>
+
+</section>
+
+
+{% endblock %}

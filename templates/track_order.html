@@ -1,0 +1,322 @@
+{% extends "base.html" %}
+
+{% block title %}
+
+Track Order
+
+{% endblock %}
+
+{% block content %}
+
+<section class="checkout">
+
+    <div
+        style="
+            max-width:800px;
+            margin:40px auto;
+            background:#ffffff;
+            border-radius:15px;
+            padding:35px;
+            box-shadow:0 10px 25px rgba(0,0,0,.12);
+        "
+    >
+
+        <h1
+            style="
+                text-align:center;
+                color:#2e7d32;
+            "
+        >
+
+            <i class="bi bi-bag-check-fill"></i>
+
+            Track Your Order
+
+        </h1>
+
+        <hr>
+
+        <div
+            style="
+                display:grid;
+                grid-template-columns:repeat(3,1fr);
+                gap:20px;
+                margin:30px 0;
+            "
+        >
+
+            <div>
+
+                <strong>
+
+                    <i class="bi bi-receipt"></i>
+
+                    Order ID
+
+                </strong>
+
+                <br>
+
+                #{{ order.id }}
+
+            </div>
+
+            <div>
+
+                <strong>
+
+                    <i class="bi bi-person-fill"></i>
+
+                    Customer
+
+                </strong>
+
+                <br>
+
+                {{ order.customer_name }}
+
+            </div>
+
+            <div>
+
+                <strong>
+
+                    <i class="bi bi-shop"></i>
+
+                    Order Type
+
+                </strong>
+
+                <br>
+
+                {{ order.order_type }}
+
+            </div>
+
+            <div>
+
+                <strong>
+
+                    <i class="bi bi-grid-3x3-gap-fill"></i>
+
+                    Table
+
+                </strong>
+
+                <br>
+
+                {{ order.table_number if order.table_number else "-" }}
+
+            </div>
+
+            <div>
+
+                <strong>
+
+                    <i class="bi bi-currency-rupee"></i>
+
+                    Total
+
+                </strong>
+
+                <br>
+
+                ₹{{ order.total_amount }}
+
+            </div>
+
+        </div>
+
+        <hr>
+
+        <h2
+            style="
+                text-align:center;
+                margin-top:30px;
+                margin-bottom:35px;
+            "
+        >
+
+            <i class="bi bi-truck"></i>
+
+            Order Progress
+
+        </h2>
+
+        <div class="order-progress">
+
+            <div class="step {% if order.status in ['Pending','Preparing','Ready','Served'] %}active{% endif %}">
+
+                <div class="circle">
+
+                    <i class="bi bi-receipt"></i>
+
+                </div>
+
+                <p>
+
+                    Pending
+
+                </p>
+
+            </div>
+
+            <div class="line {% if order.status in ['Preparing','Ready','Served'] %}active{% endif %}"></div>
+
+            <div class="step {% if order.status in ['Preparing','Ready','Served'] %}active{% endif %}">
+
+                <div class="circle">
+
+                    <i class="bi bi-fire"></i>
+
+                </div>
+
+                <p>
+
+                    Preparing
+
+                </p>
+
+            </div>
+
+            <div class="line {% if order.status in ['Ready','Served'] %}active{% endif %}"></div>
+
+            <div class="step {% if order.status in ['Ready','Served'] %}active{% endif %}">
+
+                <div class="circle">
+
+                    <i class="bi bi-cup-hot-fill"></i>
+
+                </div>
+
+                <p>
+
+                    Ready
+
+                </p>
+
+            </div>
+
+            <div class="line {% if order.status == 'Served' %}active{% endif %}"></div>
+
+            <div class="step {% if order.status == 'Served' %}active{% endif %}">
+
+                <div class="circle">
+
+                    <i class="bi bi-check-circle-fill"></i>
+
+                </div>
+
+                <p>
+
+                    Served
+
+                </p>
+
+            </div>
+
+        </div>
+
+        <div
+            style="
+                text-align:center;
+                margin-top:40px;
+            "
+        >
+
+            {% if order.status=="Pending" %}
+
+                <span class="status-badge pending">
+
+                    🟡 Pending
+
+                </span>
+
+                <p style="margin-top:15px;">
+
+                    Your order has been received successfully.
+
+                </p>
+
+            {% elif order.status=="Preparing" %}
+
+                <span class="status-badge preparing">
+
+                    👨‍🍳 Preparing
+
+                </span>
+
+                <p style="margin-top:15px;">
+
+                    Our chef is preparing your delicious meal.
+
+                </p>
+
+            {% elif order.status=="Ready" %}
+
+                <span class="status-badge ready">
+
+                    🍽 Ready
+
+                </span>
+
+                <p style="margin-top:15px;">
+
+                    Your food is ready and will be served shortly.
+
+                </p>
+
+            {% elif order.status=="Served" %}
+
+                <span class="status-badge served">
+
+                    ✅ Served
+
+                </span>
+
+                <p style="margin-top:15px;">
+
+                    Thank you for dining with Varhadi Virasat ❤️
+
+                </p>
+
+            {% endif %}
+
+        </div>
+
+        <div
+            style="
+                text-align:center;
+                margin-top:40px;
+            "
+        >
+
+            <a href="/">
+
+                <button class="secondary-btn">
+
+                    <i class="bi bi-house-fill"></i>
+
+                    Home
+
+                </button>
+
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+<script>
+
+setInterval(function(){
+
+    location.reload();
+
+},5000);
+
+</script>
+
+{% endblock %}

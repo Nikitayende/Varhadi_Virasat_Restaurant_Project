@@ -1,0 +1,204 @@
+{% extends "base.html" %}
+
+{% block title %}
+Orders | Varhadi Virasat
+{% endblock %}
+
+{% block content %}
+
+<section class="admin-dashboard">
+
+    <h1>
+        <i class="bi bi-bag-check-fill"></i>
+        Orders
+    </h1>
+
+    <div class="manage-top">
+
+        <a href="/admin">
+            <button class="secondary-btn">
+                <i class="bi bi-arrow-left-circle"></i>
+                Back to Admin
+            </button>
+        </a>
+
+    </div>
+
+    <div class="search-box">
+
+        <input
+            type="text"
+            id="orderSearch"
+            placeholder="🔍 Search by Order ID, Customer, Phone or Order Type..."
+            onkeyup="searchOrders()"
+        >
+
+    </div>
+
+    <table class="admin-table" id="ordersTable">
+
+        <thead>
+
+            <tr>
+                <th>ID</th>
+                <th>Customer</th>
+                <th>Phone</th>
+                <th>Order Type</th>
+                <th>Table</th>
+                <th>Total</th>
+                <th>Status</th>
+                <th>Action</th>
+            </tr>
+
+        </thead>
+
+        <tbody>
+
+        {% for order in orders %}
+
+        <tr>
+
+            <td>#{{ order.id }}</td>
+
+            <td>{{ order.customer_name }}</td>
+
+            <td>{{ order.phone }}</td>
+
+            <td>{{ order.order_type }}</td>
+
+            <td>
+                {% if order.order_type == "Takeaway" %}
+                    -
+                {% else %}
+                    {{ order.table_number }}
+                {% endif %}
+            </td>
+
+            <td>₹{{ order.total_amount }}</td>
+
+            <td>
+
+                {% if order.status == "Pending" %}
+
+                <span class="status pending">
+                    {{ order.status }}
+                </span>
+
+                {% elif order.status == "Preparing" %}
+
+                <span class="status preparing">
+                    {{ order.status }}
+                </span>
+
+                {% elif order.status == "Ready" %}
+
+                <span class="status ready">
+                    {{ order.status }}
+                </span>
+
+                {% elif order.status == "Served" %}
+
+                <span class="status served">
+                    {{ order.status }}
+                </span>
+
+                {% else %}
+
+                <span class="status">
+                    {{ order.status }}
+                </span>
+
+                {% endif %}
+
+            </td>
+
+            <td>
+
+                <a href="/order_details/{{ order.id }}">
+
+                    <button class="edit-btn">
+
+                        <i class="bi bi-eye"></i>
+
+                        Details
+
+                    </button>
+
+                </a>
+
+                <a
+                    href="/delete_order/{{ order.id }}"
+                    onclick="return confirm('Delete this order?');"
+                >
+
+                    <button class="delete-btn">
+
+                        <i class="bi bi-trash"></i>
+
+                        Delete
+
+                    </button>
+
+                </a>
+
+            </td>
+
+        </tr>
+
+        {% endfor %}
+
+        </tbody>
+
+    </table>
+
+</section>
+
+<script>
+
+function searchOrders() {
+
+    let input = document.getElementById("orderSearch").value.toLowerCase();
+
+    let table = document.getElementById("ordersTable");
+
+    let rows = table.getElementsByTagName("tr");
+
+    for (let i = 1; i < rows.length; i++) {
+
+        let text = rows[i].innerText.toLowerCase();
+
+        if (text.indexOf(input) > -1) {
+
+            rows[i].style.display = "";
+
+        } else {
+
+            rows[i].style.display = "none";
+
+        }
+
+    }
+
+}
+
+</script>
+
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

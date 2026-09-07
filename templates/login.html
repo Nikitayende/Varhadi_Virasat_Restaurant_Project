@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+
+{% block title %}
+Admin Login
+{% endblock %}
+
+{% block content %}
+
+<section class="checkout">
+
+    <h1>🔐 Admin Login</h1>
+
+{% if error %}
+
+<div style="
+    background:#ffebee;
+    color:#c62828;
+    padding:12px;
+    border-radius:8px;
+    margin-bottom:20px;
+    text-align:center;
+">
+
+    {{ error }}
+
+</div>
+
+{% endif %}
+
+    <form action="/login" method="POST">
+
+        <label>Username</label>
+
+        <input
+            type="text"
+            name="username"
+            required
+        >
+
+        <label>Password</label>
+
+        <input
+            type="password"
+            name="password"
+            required
+        >
+
+        <button type="submit">
+
+            Login
+
+        </button>
+
+    </form>
+
+</section>
+
+{% endblock %}

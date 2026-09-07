@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <title>Invoice</title>
+
+    <link rel="stylesheet"
+    href="{{ url_for('static',
+    filename='css/print_invoice.css') }}">
+
+</head>
+
+<body>
+
+<!-- invoice here -->
+
+{% block head %}
+
+<link rel="stylesheet"
+href="{{ url_for('static', filename='css/print_invoice.css') }}">
+
+{% endblock %}
+
+{% block content %}
+
+{% set subtotal = namespace(value=0) %}
+
+<div class="invoice">
+
+    <!-- ================= HEADER ================= -->
+
+    <div class="invoice-header">
+
+        <h1>VARHADI VIRASAT</h1>
+
+        <div class="header-line"></div>
+
+        <h3>AUTHENTIC TASTE OF VIDARBHA</h3>
+
+        <div class="contact">
+
+            📍 Nagpur, Maharashtra<br>
+
+            📞 +91 9876543210
+
+        </div>
+
+    </div>
+
+    <!-- ================= INFO ================= -->
+
+    <table class="invoice-info">
+
+    <tr>
+
+    <td>
+
+    <strong>Invoice No :</strong> #{{ order.id }}<br>
+
+    <strong>Date :</strong> {{ current_date }}<br>
+
+    <strong>Time :</strong> {{ current_time }}
+
+    </td>
+
+    <td>
+
+    <strong>Customer :</strong> {{ order.customer_name }}<br>
+
+    <strong>Table :</strong> {{ order.table_number }}<br>
+
+    <strong>Status :</strong> {{ order.status }}
+
+    </td>
+
+    </tr>
+
+    </table>
+
+    <!-- ================= TABLE ================= -->
+
+    <table class="bill-table">
+
+        <thead>
+
+            <tr>
+
+                <th>Dish</th>
+
+                <th>Qty</th>
+
+                <th>Price</th>
+
+                <th>Total</th>
+
+            </tr>
+
+        </thead>
+
+        <tbody>
+
+        {% for item in items %}
+
+        {% set line_total = item.quantity * item.price %}
+        {% set subtotal.value = subtotal.value + line_total %}
+
+        <tr>
+
+            <td>{{ item.dish_name }}</td>
+
+            <td>{{ item.quantity }}</td>
+
+            <td>₹{{ item.price }}</td>
+
+            <td>₹{{ line_total }}</td>
+
+        </tr>
+
+        {% endfor %}
+
+        </tbody>
+
+    </table>
+
+    <!-- ================= TOTAL ================= -->
+
+    <div class="bill-total">
+
+        <p>
+
+            <span>Subtotal</span>
+
+            <span>₹{{ subtotal.value }}</span>
+
+        </p>
+
+        <p>
+
+            <span>GST (5%)</span>
+
+            <span>₹{{ "%.2f"|format(subtotal.value*0.05) }}</span>
+
+        </p>
+
+        <hr>
+
+        <h2>
+
+            Grand Total
+
+            ₹{{ "%.2f"|format(subtotal.value*1.05) }}
+
+        </h2>
+
+    </div>
+
+    <!-- ================= FOOTER ================= -->
+
+    <div class="footer">
+
+        <h2>Thank You For Visiting!</h2>
+
+        <h3>Visit Again</h3>
+
+    </div>
+
+</div>
+
+{% endblock %}
+
+
+{% if auto_print %}
+
+<script>
+
+window.onload = function () {
+
+    window.print();
+
+};
+
+window.onafterprint = function () {
+
+    window.close();
+
+};
+
+</script>
+
+{% endif %}
+
+
+</body>
+</html>
+
+
+

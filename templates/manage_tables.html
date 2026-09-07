@@ -1,0 +1,256 @@
+{% extends "base.html" %}
+
+{% block title %}
+QR & Tables | Varhadi Virasat
+{% endblock %}
+
+{% block content %}
+
+<section class="admin-dashboard">
+
+    <h1 class="page-title">
+
+        <i class="bi bi-qr-code"></i>
+        QR & Table Management
+
+    </h1>
+
+    <div class="manage-top">
+
+        <a href="/admin">
+
+            <button class="secondary-btn">
+
+                <i class="bi bi-arrow-left-circle"></i>
+
+                Back to Admin
+
+            </button>
+
+        </a>
+
+        <a href="/add_table">
+
+            <button class="admin-btn">
+
+                <i class="bi bi-plus-circle"></i>
+
+                Add New Table
+
+            </button>
+
+        </a>
+
+    </div>
+
+    <div class="qr-summary">
+
+        <div class="summary-card">
+            <h2>{{ tables|length }}</h2>
+            <p>Total Tables</p>
+        </div>
+
+        <div class="summary-card">
+            <h2>
+                {{ tables|selectattr("status","equalto","Available")|list|length }}
+            </h2>
+            <p>Available</p>
+        </div>
+
+        <div class="summary-card">
+            <h2>
+                {{ tables|selectattr("status","equalto","Occupied")|list|length }}
+            </h2>
+            <p>Occupied</p>
+        </div>
+
+        <div class="summary-card">
+            <h2>
+                {{ tables|selectattr("status","equalto","Reserved")|list|length }}
+            </h2>
+            <p>Reserved</p>
+        </div>
+
+    </div>
+
+    <div class="table-search">
+
+        <input
+            type="text"
+            id="tableSearch"
+            placeholder="🔍 Search by Table, Area or Position">
+
+    </div>
+
+
+    <div class="table-filters">
+
+        <button class="filter-btn active" onclick="filterCards('all')">All</button>
+
+        <button class="filter-btn" onclick="filterCards('Dining')">Dining</button>
+
+        <button class="filter-btn" onclick="filterCards('Private Dining')">Private Dining</button>
+
+        <button class="filter-btn" onclick="filterCards('Terrace')">Terrace</button>
+
+        <button class="filter-btn" onclick="filterCards('Garden')">Garden</button>
+
+    </div>
+
+    <div class="table-grid">
+
+        {% for table in tables %}
+
+        <div class="table-card" data-area="{{ table.area }}">
+
+            <h3>Table {{ table.table_number }}</h3>
+
+            <p><strong>Area:</strong> {{ table.area }}</p>
+
+            <p><strong>Position:</strong> {{ table.position }}</p>
+
+            <p>
+                <strong>Status:</strong>
+
+                <span class="status
+                {% if table.status == 'Available' %}
+                    ready
+                {% elif table.status == 'Occupied' %}
+                    pending
+                {% else %}
+                    preparing
+                {% endif %}
+                ">
+                    {{ table.status }}
+                </span>
+
+            </p>
+
+            <img
+                src="{{ url_for('static', filename=table.qr_code) }}"
+                class="table-qr"
+                alt="QR Code">
+
+            <div class="table-buttons">
+
+                <a href="{{ url_for('view_qr', table_id=table.id) }}">
+
+                    <button class="edit-btn">
+
+                        <i class="bi bi-eye"></i>
+
+                        View
+
+                    </button>
+
+                </a>
+
+                <a href="{{ url_for('download_qr', table_id=table.id) }}">
+
+                    <button class="secondary-btn">
+
+                        <i class="bi bi-download"></i>
+
+                        Download
+
+                    </button>
+
+                </a>
+
+                <button
+                    class="print-btn"
+                    onclick="printQR('{{ url_for('static', filename=table.qr_code) }}')">
+
+                    <i class="bi bi-printer"></i>
+
+                    Print
+
+                </button>
+
+                <a
+                    href="/delete_table/{{ table.id }}"
+                    onclick="return confirm('Are you sure you want to delete Table {{ table.table_number }}?');">
+
+                    <button class="delete-btn">
+
+                        <i class="bi bi-trash"></i>
+
+                        Delete
+
+                    </button>
+
+                </a>
+
+            </div>
+
+        </div>
+
+        {% endfor %}
+
+    </div>
+
+</section>
+
+<script>
+
+function printQR(image){
+
+    let w = window.open("");
+
+    w.document.write(
+        "<img src='"+image+"' style='width:350px;'>"
+    );
+
+    w.print();
+
+}
+
+const search = document.getElementById("tableSearch");
+
+search.addEventListener("keyup", function(){
+
+    let value = this.value.toLowerCase();
+
+    document.querySelectorAll(".table-card").forEach(function(card){
+
+        let text = card.innerText.toLowerCase();
+
+        card.style.display =
+            text.includes(value)
+            ? "block"
+            : "none";
+
+    });
+
+});
+
+function filterCards(area){
+
+    document.querySelectorAll(".filter-btn").forEach(btn=>{
+        btn.classList.remove("active");
+    });
+
+    event.target.classList.add("active");
+
+    document.querySelectorAll(".table-card").forEach(card=>{
+
+        if(area==="all"){
+
+            card.style.display="block";
+
+        }else{
+
+            card.style.display=
+                card.dataset.area===area
+                ? "block"
+                : "none";
+
+        }
+
+    });
+
+}
+
+</script>
+
+{% endblock %}

@@ -1,0 +1,261 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<section class="admin-dashboard">
+
+    <h1>
+
+        <i class="bi bi-calendar-check"></i>
+
+        Reservation Management
+
+    </h1>
+
+    <div class="manage-top">
+
+        <a href="/admin">
+
+            <button class="secondary-btn">
+
+                <i class="bi bi-arrow-left-circle"></i>
+
+                Back to Admin
+
+            </button>
+
+        </a>
+
+    </div>
+
+    <table class="admin-table reservation-table">
+
+        <thead>
+
+            <tr>
+
+                <th>
+
+                    <i class="bi bi-hash"></i>
+
+                    ID
+
+                </th>
+
+                <th>
+
+                    <i class="bi bi-person"></i>
+
+                    Name
+
+                </th>
+
+                <th>
+
+                    <i class="bi bi-telephone"></i>
+
+                    Phone
+
+                </th>
+
+                <th>
+
+                    <i class="bi bi-calendar-date"></i>
+
+                    Date
+
+                </th>
+
+                <th>
+
+                    <i class="bi bi-clock"></i>
+
+                    Time
+
+                </th>
+
+                <th>
+
+                    <i class="bi bi-people"></i>
+
+                    Guests
+
+                </th>
+
+                <th>
+
+                    <i class="bi bi-check2-circle"></i>
+
+                    Status
+
+                </th>
+
+                <th>
+
+                    <i class="bi bi-gear"></i>
+
+                    Actions
+
+                </th>
+
+            </tr>
+
+        </thead>
+
+        <tbody>
+
+            {% for reservation in reservations %}
+
+            <tr>
+
+                <td>{{ reservation.id }}</td>
+
+                <td>{{ reservation.name }}</td>
+
+                <td>{{ reservation.phone }}</td>
+
+                <td>{{ reservation.reservation_date }}</td>
+
+                <td>{{ reservation.reservation_time }}</td>
+
+                <td>{{ reservation.guests }}</td>
+
+                <!-- STATUS -->
+
+                <td>
+
+                    {% if reservation.status == "Pending" %}
+
+                        <span class="status-badge pending">
+
+                            🟡 Pending
+
+                        </span>
+
+                    {% elif reservation.status == "Confirmed" %}
+
+                        <span class="status-badge confirmed">
+
+                            🟢 Confirmed
+
+                        </span>
+
+                    {% elif reservation.status == "Dining" %}
+
+                        <span class="status-badge dining">
+
+                            🍽 Dining
+
+                        </span>
+
+                    {% elif reservation.status == "Completed" %}
+
+                        <span class="status-badge completed">
+
+                            ✅ Completed
+
+                        </span>
+
+                    {% endif %}
+
+                </td>
+
+                <!-- ACTIONS -->
+
+                <td>
+
+                    <div class="reservation-actions">
+
+                        {% if reservation.status == "Pending" %}
+
+                            <a href="/confirm_reservation/{{ reservation.id }}">
+
+                                <button class="edit-btn">
+
+                                    <i class="bi bi-check-lg"></i>
+
+                                    Confirm
+
+                                </button>
+
+                            </a>
+
+                        {% elif reservation.status == "Confirmed" %}
+
+                            <a href="/dining_reservation/{{ reservation.id }}">
+
+                                <button class="admin-btn">
+
+                                    <i class="bi bi-cup-hot"></i>
+
+                                    Dining
+
+                                </button>
+
+                            </a>
+
+                        {% elif reservation.status == "Dining" %}
+
+                            <a href="/complete_reservation/{{ reservation.id }}">
+
+                                <button class="secondary-btn">
+
+                                    <i class="bi bi-check2-all"></i>
+
+                                    Complete
+
+                                </button>
+
+                            </a>
+
+                        {% else %}
+
+                            <button
+                                disabled
+                                style="
+                                    background:#adb5bd;
+                                    color:white;
+                                    border:none;
+                                    padding:10px 16px;
+                                    border-radius:8px;
+                                "
+                            >
+
+                                <i class="bi bi-check-circle-fill"></i>
+
+                                Completed
+
+                            </button>
+
+                        {% endif %}
+
+                        <a
+                            href="/delete_reservation/{{ reservation.id }}"
+                            onclick="return confirm('Delete this reservation?');"
+                        >
+
+                            <button class="delete-btn">
+
+                                <i class="bi bi-trash"></i>
+
+                                Delete
+
+                            </button>
+
+                        </a>
+
+                    </div>
+
+                </td>
+
+            </tr>
+
+            {% endfor %}
+
+        </tbody>
+
+    </table>
+
+</section>
+
+{% endblock %}

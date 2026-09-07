@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>
+
+        {% block title %}
+
+        Varhadi Virasat
+
+        {% endblock %}
+
+    </title>
+
+    <link rel="stylesheet"
+    href="{{ url_for('static',
+    filename='css/style.css') }}">
+
+    <!-- Bootstrap Icons -->
+
+    <link rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+    {% block head %}
+
+    {% endblock %}
+
+
+</head>
+
+<body>
+
+    <!-- ================= PRELOADER ================= -->
+
+<div id="preloader">
+
+    <div class="loader-box">
+
+        <img src="{{ url_for('static', filename='images/logo/logo.png') }}"
+             alt="Logo"
+             class="loader-logo">
+
+        <h2>Varhadi Virasat</h2>
+
+        <div class="loader-spinner"></div>
+
+    </div>
+
+</div>
+
+    <!-- ================= NAVBAR ================= -->
+
+    <header>
+
+        <nav class="navbar">
+
+            <a href="/" class="logo">
+
+                <img
+                    id="navbarLogo"
+                    src="{{ url_for('static', filename='images/logo/logo_green.png') }}"
+                    alt="Logo">
+
+                <div class="logo-text">
+
+                    <h2>Varhadi Virasat</h2>
+
+                    <span>Authentic Taste of Vidarbha</span>
+
+                </div>
+
+            </a>
+
+                <div class="menu-toggle" id="menuToggle">
+
+                    <i class="bi bi-list"></i>
+
+                </div>
+
+            <ul class="nav-links">
+
+                <li>
+
+                    <a href="/">
+
+                        <i class="bi bi-house-heart-fill"></i>
+                        Home
+
+                    </a>
+
+                </li>
+
+                <li>
+
+                    <a href="/menu">
+
+                        <i class="bi bi-journal-richtext"></i>
+                        Menu
+
+                    </a>
+
+                </li>
+
+                <li>
+
+                    <a href="/reservation">
+
+                        <i class="bi bi-calendar2-check-fill"></i>
+                        Reservation
+
+                    </a>
+
+                </li>
+
+                <li>
+
+                    <a href="/cart">
+
+                        <i class="bi bi-cart4"></i>
+                        Cart
+
+                        <span id="cart-count">
+
+                            {{ session.get('cart', [])|length }}
+
+                        </span>
+
+                    </a>
+
+                </li>
+
+                <li>
+
+                    <a href="/admin">
+
+                        <i class="bi bi-speedometer2"></i>
+                        Admin
+
+                    </a>
+
+                </li>
+
+            </ul>
+
+        </nav>
+
+    </header>
+
+
+    <!-- Chart.js -->
+    
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <!-- ================= PAGE CONTENT ================= -->
+
+    <main class="page-content">
+
+        {% block content %}
+
+        {% endblock %}
+
+    </main>
+
+    <!-- ================= FOOTER ================= -->
+
+<footer class="footer">
+
+    <div class="footer-grid">
+
+        <div>
+
+            <h2>🌿 Varhadi Virasat</h2>
+
+            <p>
+                Authentic Maharashtrian & Varhadi Restaurant
+                serving delicious vegetarian food with
+                traditional hospitality.
+            </p>
+
+        </div>
+
+        <div>
+
+            <h3>Quick Links</h3>
+
+            <ul>
+
+                <li><a href="/">Home</a></li>
+                <li><a href="/menu">Menu</a></li>
+                <li><a href="/reservation">Reservation</a></li>
+                <li><a href="/cart">Cart</a></li>
+
+            </ul>
+
+        </div>
+
+        <div>
+
+            <h3>Opening Hours</h3>
+
+            <p>Monday - Sunday</p>
+
+            <p>11:00 AM - 11:00 PM</p>
+
+        </div>
+
+        <div>
+
+            <h3>Contact</h3>
+
+            <p>📍 Nagpur, Maharashtra</p>
+
+            <p>📞 +91 9876543210</p>
+
+            <p>✉ info@varhadivirasat.com</p>
+
+        </div>
+
+    </div>
+
+    <hr>
+
+    <div class="footer-bottom">
+
+        © 2026 Varhadi Virasat. All Rights Reserved.
+
+    </div>
+
+</footer>
+
+    <!-- ================= JS ================= -->
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+
+    <!-- Toast -->
+
+    <div id="toast" class="toast">
+
+        <i class="bi bi-check-circle-fill"></i>
+
+        Item added to cart
+
+    </div>
+
+
+    <!-- ================= WHATSAPP FLOAT ================= -->
+
+<a href="https://wa.me/919876543210"
+   class="whatsapp-float"
+   target="_blank">
+
+    <i class="bi bi-whatsapp"></i>
+
+</a>
+
+<!-- ================= SCROLL TO TOP ================= -->
+
+<button id="scrollTopBtn">
+
+    <i class="bi bi-arrow-up"></i>
+
+</button>
+
+
+</body>
+
+</html>

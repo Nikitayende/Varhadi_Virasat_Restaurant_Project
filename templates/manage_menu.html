@@ -1,0 +1,157 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<section class="admin-dashboard">
+
+    <h1>
+
+        <i class="bi bi-journal-text"></i>
+
+        Manage Menu
+
+    </h1>
+
+    <div class="manage-top">
+
+         <a href="/admin">
+
+            <button class="secondary-btn">
+
+                <i class="bi bi-arrow-left-circle"></i>
+
+                Back to Admin
+
+            </button>
+
+        </a>
+
+        <a href="/add_dish">
+
+            <button class="admin-btn">
+
+                <i class="bi bi-plus-square"></i>
+
+                Add New Dish
+
+            </button>
+
+        </a>
+
+
+    </div>
+
+    <table class="admin-table">
+
+        <tr>
+
+            <th>
+
+                <i class="bi bi-image"></i>
+
+                Image
+
+            </th>
+
+            <th>
+
+                <i class="bi bi-cup-hot"></i>
+
+                Dish
+
+            </th>
+
+            <th>
+
+                <i class="bi bi-grid-3x3-gap"></i>
+
+                Category
+
+            </th>
+
+            <th>
+
+                <i class="bi bi-currency-rupee"></i>
+
+                Price
+
+            </th>
+
+            <th>
+
+                <i class="bi bi-gear"></i>
+
+                Actions
+
+            </th>
+
+        </tr>
+
+        {% for item in menu_items %}
+
+        <tr>
+
+            <td>
+
+                <img
+                    src="{{ url_for('static', filename='images/dishes/' + item.image) }}"
+                    class="dish-image"
+                >
+
+            </td>
+
+            <td>
+
+                {{ item.dish_name }}
+
+            </td>
+
+            <td>
+
+                {{ item.category }}
+
+            </td>
+
+            <td>
+
+                ₹{{ item.price }}
+
+            </td>
+
+            <td>
+
+                <a href="/edit_dish/{{ item.id }}">
+
+                    <button class="edit-btn">
+
+                        <i class="bi bi-pencil"></i>
+
+                        Edit
+
+                    </button>
+
+                </a>
+
+                <a href="/delete_dish/{{ item.id }}">
+
+                    <button class="delete-btn">
+
+                        <i class="bi bi-trash"></i>
+
+                        Delete
+
+                    </button>
+
+                </a>
+
+            </td>
+
+        </tr>
+
+        {% endfor %}
+
+    </table>
+
+</section>
+
+{% endblock %}

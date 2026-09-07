@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<section class="checkout">
+
+    <h1>🍽 Reserve Your Table</h1>
+
+    <form action="/save_reservation" method="POST">
+
+        <label>Full Name</label>
+        <input
+            type="text"
+            name="name"
+            required
+        >
+
+        <label>Phone Number</label>
+        <input
+            type="text"
+            name="phone"
+            required
+        >
+
+        <label>Reservation Date</label>
+        <input
+            type="date"
+            name="reservation_date"
+            required
+        >
+
+        <label>Reservation Time</label>
+        <input
+            type="time"
+            name="reservation_time"
+            required
+        >
+
+        <label>Number of Guests</label>
+        <input
+            type="number"
+            name="guests"
+            min="1"
+            required
+        >
+
+        <button type="submit">
+
+            Reserve Table
+
+        </button>
+
+    </form>
+
+</section>
+
+{% endblock %}

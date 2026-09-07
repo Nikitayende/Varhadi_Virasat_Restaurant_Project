@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <title>QR Card - Table {{ table.table_number }}</title>
+
+    <style>
+
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+            font-family:Arial, Helvetica, sans-serif;
+        }
+
+        body{
+
+            background:#f5f5f5;
+
+            display:flex;
+
+            justify-content:center;
+
+            align-items:center;
+
+            min-height:100vh;
+
+        }
+
+        .qr-card{
+
+            width:420px;
+
+            background:#fff;
+
+            border-radius:18px;
+
+            box-shadow:0 10px 25px rgba(0,0,0,.12);
+
+            padding:35px;
+
+            text-align:center;
+
+            border:3px solid #2E7D32;
+
+        }
+
+        .logo{
+
+            font-size:34px;
+
+            margin-bottom:10px;
+
+        }
+
+        h1{
+
+            color:#2E7D32;
+
+            margin-bottom:20px;
+
+        }
+
+        .details{
+
+            margin-bottom:20px;
+
+            font-size:18px;
+
+            text-align:left;
+
+        }
+
+        .details p{
+
+            margin:8px 0;
+
+        }
+
+        .details strong{
+
+            color:#2E7D32;
+
+        }
+
+        .qr-img{
+
+            width:260px;
+
+            height:260px;
+
+            margin:15px auto;
+
+            display:block;
+
+            border:10px solid #f5f5f5;
+
+            border-radius:12px;
+
+        }
+
+        .scan{
+
+            margin-top:15px;
+
+            font-size:18px;
+
+            color:#444;
+
+            font-weight:bold;
+
+        }
+
+        .btns{
+
+            margin-top:30px;
+
+        }
+
+        button{
+
+            padding:12px 24px;
+
+            border:none;
+
+            border-radius:8px;
+
+            cursor:pointer;
+
+            font-size:16px;
+
+            margin:6px;
+
+            color:#fff;
+
+        }
+
+        .print{
+
+            background:#2E7D32;
+
+        }
+
+        .back{
+
+            background:#1976D2;
+
+        }
+
+        button:hover{
+
+            opacity:.9;
+
+        }
+
+        @media print{
+
+            body{
+
+                background:white;
+
+            }
+
+            .btns{
+
+                display:none;
+
+            }
+
+            .qr-card{
+
+                box-shadow:none;
+
+                border:2px solid #2E7D32;
+
+            }
+
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+<div class="qr-card">
+
+    <div class="logo">🌿</div>
+
+    <h1>Varhadi Virasat</h1>
+
+    <div class="details">
+
+        <p><strong>Table No :</strong> {{ table.table_number }}</p>
+
+        <p><strong>QR No :</strong> QR-{{ "%03d"|format(table.table_number) }}</p>
+
+        <p><strong>Area :</strong> {{ table.area }}</p>
+
+        <p><strong>Position :</strong> {{ table.position }}</p>
+
+        <p><strong>Status :</strong> {{ table.status }}</p>
+
+    </div>
+
+    <img
+        src="{{ url_for('static', filename=table.qr_code) }}"
+        class="qr-img">
+
+    <div class="scan">
+
+        Scan QR to Order
+
+    </div>
+
+    <div class="btns">
+
+        <button
+            class="back"
+            onclick="history.back()">
+
+            ← Back
+
+        </button>
+
+        <button
+            class="print"
+            onclick="window.print()">
+
+            🖨 Print / Save PDF
+
+        </button>
+
+    </div>
+
+</div>
+
+</body>
+</html>

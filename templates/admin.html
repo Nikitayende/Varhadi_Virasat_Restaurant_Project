@@ -1,0 +1,364 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<section class="admin-dashboard">
+
+    <h1 style="color:#2e7d32; font-size:42px;">
+        <i class="bi bi-shield-lock"></i>
+        Admin Panel
+    </h1>
+
+    <div
+        style="
+            display:flex;
+            justify-content:space-between;
+            align-items:center;
+            margin-bottom:10px;
+        "
+    >
+
+        <a href="/">
+
+            <button
+                style="
+                    background:#ff8f05;
+                    color:white;
+                    border:none;
+                    padding:10px 5px;
+                    border-radius:8px;
+                    cursor:pointer;
+                    font-size:16px;
+                "
+            >
+
+                <i class="bi bi-arrow-left-circle"></i>
+
+                Back to Home
+
+            </button>
+
+        </a>
+
+        <a href="/logout">
+
+            <button
+                style="
+                    background:#c62828;
+                    color:white;
+                    border:none;
+                    padding:10px 20px;
+                    border-radius:8px;
+                    cursor:pointer;
+                    font-size:16px;
+                "
+            >
+
+                <i class="bi bi-box-arrow-right"></i>
+
+                Logout
+
+            </button>
+
+        </a>
+
+    </div>
+
+    <div class="admin-actions">
+
+        <a href="/manage_menu">
+
+            <button class="admin-btn">
+
+                <i class="bi bi-journal-text"></i>
+                Manage Menu
+
+            </button>
+
+        </a>
+
+        <a href="/orders">
+
+            <button class="admin-btn">
+
+                <i class="bi bi-bag-check-fill"></i>
+                View Orders
+
+            </button>
+
+        </a>
+
+        <a href="/dashboard">
+
+            <button class="admin-btn">
+
+                <i class="bi bi-speedometer2"></i>
+                Dashboard
+
+            </button>
+
+        </a>
+
+        <a href="/manage_reservations">
+
+            <button class="admin-btn">
+
+                <i class="bi bi-calendar2-check-fill"></i>
+                Manage Reservations
+
+            </button>
+
+        </a>
+
+        <a href="/manage_tables">
+
+            <button class="admin-btn">
+
+                <i class="bi bi-qr-code"></i>
+                QR Management
+
+            </button>
+
+        </a>
+
+    </div>
+
+    
+    <div class="dashboard-cards">
+
+        <div class="dashboard-card">
+
+            <h2>
+
+                <i class="bi bi-bag-fill"></i>
+                Total Orders
+
+            </h2>
+
+            <p>{{ total_orders }}</p>
+
+        </div>
+
+        <div class="dashboard-card">
+
+            <h2>
+
+                <i class="bi bi-calendar-event-fill"></i>
+                Reservations
+
+            </h2>
+
+            <p>{{ total_reservations }}</p>
+
+        </div>
+
+        <div class="dashboard-card">
+
+            <h2>
+
+                <i class="bi bi-cup-hot-fill"></i>
+                Menu Items
+
+            </h2>
+
+            <p>{{ total_menu_items }}</p>
+
+        </div>
+
+        <div class="dashboard-card">
+
+            <h2>
+
+                <i class="bi bi-currency-rupee"></i>
+                Today's Sales
+
+            </h2>
+
+            <p>₹{{ "%.2f"|format(total_sales) }}</p>
+
+        </div>
+        
+    </div>
+
+    <div style="margin:25px 0;">
+
+        <i class="bi bi-search" style="font-size:22px;color:#2e7d32;"></i>
+
+        <input
+            type="text"
+            id="searchOrder"
+            placeholder="Search Order..."
+            style="
+                width:350px;
+                padding:10px;
+                border:2px solid #2e7d32;
+                border-radius:8px;
+                font-size:16px;
+            "
+        >
+
+    </div>
+
+    <h2>
+
+        <i class="bi bi-clock-history"></i>
+        Recent Orders
+
+    </h2>
+
+    <table
+        class="admin-table"
+        id="ordersTable"
+    >
+
+        <tr>
+
+            <th>ID</th>
+            <th>Customer</th>
+            <th>Table</th>
+            <th>Total</th>
+            <th>Status</th>
+            <th>Action</th>
+
+        </tr>
+
+        {% for order in orders %}
+
+        <tr>
+
+            <td>#{{ order.id }}</td>
+
+            <td>{{ order.customer_name }}</td>
+
+            <td>{{ order.table_number }}</td>
+
+            <td>₹{{ order.total_amount }}</td>
+
+            <td>
+
+                <form action="/update_status" method="POST">
+
+                    <input
+                        type="hidden"
+                        name="order_id"
+                        value="{{ order.id }}"
+                    >
+
+                    <select name="status">
+
+                        <option value="Pending"
+                            {% if order.status=="Pending" %}selected{% endif %}>
+                            Pending
+                        </option>
+
+                        <option value="Preparing"
+                            {% if order.status=="Preparing" %}selected{% endif %}>
+                            Preparing
+                        </option>
+
+                        <option value="Ready"
+                            {% if order.status=="Ready" %}selected{% endif %}>
+                            Ready
+                        </option>
+
+                        <option value="Served"
+                            {% if order.status=="Served" %}selected{% endif %}>
+                            Served
+                        </option>
+
+                    </select>
+
+                    <button type="submit">
+
+                        <i class="bi bi-check-circle-fill"></i>
+                        Save
+
+                    </button>
+
+                </form>
+
+            </td>
+
+            <td>
+
+                <a href="/order_details/{{ order.id }}">
+
+                    <button
+                        style="
+                            background:#1565c0;
+                            color:white;
+                            border:none;
+                            padding:8px 14px;
+                            border-radius:6px;
+                            cursor:pointer;
+                            margin-bottom:8px;
+                        "
+                    >
+
+                        <i class="bi bi-eye"></i>
+                        Details
+
+                    </button>
+
+                </a>
+
+                <br>
+
+                <a
+                    href="/delete_order/{{ order.id }}"
+                    onclick="return confirm('Delete this order?');"
+                >
+
+                    <button
+                        style="
+                            background:#d32f2f;
+                            color:white;
+                            border:none;
+                            padding:8px 14px;
+                            border-radius:6px;
+                            cursor:pointer;
+                        "
+                    >
+
+                        <i class="bi bi-trash"></i>
+                        Delete
+
+                    </button>
+
+                </a>
+
+            </td>
+
+        </tr>
+
+        {% endfor %}
+
+    </table>
+
+</section>
+
+<script>
+
+document.getElementById("searchOrder").addEventListener("keyup", function () {
+
+    let value = this.value.toLowerCase();
+
+    let rows = document.querySelectorAll("#ordersTable tr");
+
+    rows.forEach(function(row, index){
+
+        if(index===0) return;
+
+        let text = row.innerText.toLowerCase();
+
+        row.style.display = text.includes(value)
+            ? ""
+            : "none";
+
+    });
+
+});
+
+</script>
+
+{% endblock %}

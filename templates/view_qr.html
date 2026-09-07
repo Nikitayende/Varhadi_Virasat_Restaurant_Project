@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+
+{% block title %}
+View QR
+{% endblock %}
+
+{% block content %}
+
+<section class="admin-dashboard">
+
+    <div class="manage-top">
+
+        <a href="/manage_tables">
+
+            <button class="secondary-btn">
+
+                <i class="bi bi-arrow-left-circle"></i>
+
+                Back to QR Management
+
+            </button>
+
+        </a>
+
+    </div>
+
+    <div class="add-table-card" style="text-align:center;">
+
+        <h2>
+
+            <i class="bi bi-qr-code"></i>
+
+            Table {{ table.table_number }}
+
+        </h2>
+
+        <p><strong>Area:</strong> {{ table.area }}</p>
+
+        <p><strong>Position:</strong> {{ table.position }}</p>
+
+        <p><strong>Status:</strong> {{ table.status }}</p>
+
+        <br>
+
+        <img
+            src="{{ url_for('static', filename=table.qr_code) }}"
+            style="width:320px;">
+
+    </div>
+
+</section>
+
+{% endblock %}

@@ -1,0 +1,87 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<section class="checkout">
+
+    <h1>🎉 Order Placed Successfully!</h1>
+
+    <p style="text-align:center; margin-top:20px;">
+
+        Thank you for ordering from
+        <strong>Varhadi Virasat</strong>
+
+    </p>
+
+    <div style="text-align:center; margin-top:20px;">
+
+        <!-- View Beautiful Invoice -->
+
+        <a href="/invoice/{{ order_id }}">
+
+            <button
+                style="
+                    width:300px;
+                    height:45px;
+                    background:#1565c0;
+                    color:white;
+                    border:none;
+                    border-radius:8px;
+                    font-size:18px;
+                    cursor:pointer;
+                    margin-bottom:5px;
+                ">
+                👁 View Invoice
+            </button>
+
+        </a>
+
+        <br>
+
+        <!-- Print Invoice -->
+
+        <a href="/print_invoice/{{ order_id }}" target="_blank">
+
+            <button
+                style="
+                    width:300px;
+                    height:45px;
+                    background:#2e7d32;
+                    color:white;
+                    border:none;
+                    border-radius:8px;
+                    font-size:18px;
+                    cursor:pointer;
+                    margin-bottom:5px;
+                ">
+                🖨 Print / Save PDF
+            </button>
+
+        </a>
+
+        <br>
+
+        <!-- Home -->
+
+        <a href="/">
+
+            <button
+                style="
+                    width:300px;
+                    height:45px;
+                    background:#2e7d32;
+                    color:white;
+                    border:none;
+                    border-radius:5px;
+                    font-size:18px;
+                    cursor:pointer;
+                ">
+                🏠 Back to Home
+            </button>
+
+        </a>
+
+    </div>
+</section>
+
+{% endblock %}

@@ -1,0 +1,400 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<section class="admin-dashboard">
+
+    <h1>
+
+        <i class="bi bi-speedometer2"></i>
+
+        Sales Dashboard
+
+    </h1>
+
+    <div class="manage-top">
+
+        <a href="/admin">
+
+            <button class="secondary-btn">
+
+                <i class="bi bi-arrow-left-circle"></i>
+
+                Back to Admin
+
+            </button>
+
+        </a>
+
+    </div>
+
+    <div class="dashboard-cards">
+
+        <div class="dashboard-card">
+
+            <h2>
+
+                <i class="bi bi-bag-check-fill"></i>
+
+                Total Orders
+
+            </h2>
+
+            <p>{{ total_orders }}</p>
+
+        </div>
+
+        <div class="dashboard-card">
+
+            <h2>
+
+                <i class="bi bi-currency-rupee"></i>
+
+                Total Sales
+
+            </h2>
+
+            <p>₹{{ total_sales }}</p>
+
+        </div>
+
+        <div class="dashboard-card">
+
+            <h2>
+
+                <i class="bi bi-calendar2-check-fill"></i>
+
+                Reservations
+
+            </h2>
+
+            <p>{{ total_reservations }}</p>
+
+        </div>
+
+        <div class="dashboard-card">
+
+            <h2>
+
+                <i class="bi bi-cup-hot-fill"></i>
+
+                Menu Items
+
+            </h2>
+
+            <p>{{ total_menu_items }}</p>
+
+        </div>
+
+    </div>
+    
+    <div class="dashboard-charts">
+
+        <div class="chart-card">
+
+            <h2>
+                <i class="bi bi-pie-chart-fill"></i>
+                Order Status
+            </h2>
+
+            <canvas id="statusChart"></canvas>
+
+        </div>
+
+        <div class="chart-card">
+
+            <h2>
+                <i class="bi bi-graph-up-arrow"></i>
+                Sales Overview
+            </h2>
+
+            <canvas id="salesChart"></canvas>
+
+        </div>
+
+    </div>
+
+    <h2 style="margin-top:40px;">
+
+        <i class="bi bi-clock-history"></i>
+
+        Latest Orders
+
+    </h2>
+
+    <table class="admin-table">
+
+        <tr>
+
+            <th>
+
+                <i class="bi bi-hash"></i>
+
+                ID
+
+            </th>
+
+            <th>
+
+                <i class="bi bi-person-fill"></i>
+
+                Customer
+
+            </th>
+
+            <th>
+
+                <i class="bi bi-currency-rupee"></i>
+
+                Total
+
+            </th>
+
+            <th>
+
+                <i class="bi bi-check2-circle"></i>
+
+                Status
+
+            </th>
+
+        </tr>
+
+        {% for order in orders %}
+
+        <tr>
+
+            <td>#{{ order.id }}</td>
+
+            <td>{{ order.customer_name }}</td>
+
+            <td>₹{{ order.total_amount }}</td>
+
+            <td>{{ order.status }}</td>
+
+        </tr>
+
+        {% endfor %}
+
+    </table>
+
+</section>
+
+<script>
+
+    const statusData = {{ [
+        status_counts["Pending"],
+        status_counts["Preparing"],
+        status_counts["Ready"],
+        status_counts["Served"]
+    ] | tojson }};
+
+    const weeklySales = {{ [
+        weekly_sales[1],
+        weekly_sales[2],
+        weekly_sales[3],
+        weekly_sales[4],
+        weekly_sales[5],
+        weekly_sales[6],
+        weekly_sales[0]
+    ] | tojson }};
+
+    const statusChart = new Chart(
+
+        document.getElementById("statusChart"),
+
+        {
+
+            type: "doughnut",
+
+            data: {
+
+                labels: [
+
+                    "Pending",
+
+                    "Preparing",
+
+                    "Ready",
+
+                    "Served"
+
+                ],
+
+                datasets: [
+
+                    {
+
+                        data: statusData,
+
+                        backgroundColor: [
+
+                            "#ff9800",
+
+                            "#03a9f4",
+
+                            "#8bc34a",
+
+                            "#4caf50"
+
+                        ],
+
+                        borderWidth: 2,
+
+                        hoverOffset: 10
+
+                    }
+
+                ]
+
+            },
+
+            options: {
+
+                responsive: true,
+
+                maintainAspectRatio: false,
+
+                aspectRatio: 1.2,
+
+                radius: "70%",
+
+                plugins: {
+
+                    legend: {
+                        position: "right"
+                    }
+
+                }
+
+            }
+
+        }
+
+    );
+
+    const salesChart = new Chart(
+
+        document.getElementById("salesChart"),
+
+        {
+
+            type: "bar",
+
+            data: {
+
+                labels: [
+
+                    "Mon",
+
+                    "Tue",
+
+                    "Wed",
+
+                    "Thu",
+
+                    "Fri",
+
+                    "Sat",
+
+                    "Sun"
+
+                ],
+
+                datasets: [
+
+                    {
+
+                        data: weeklySales,
+
+                        backgroundColor: "#2E7D32",
+
+                        hoverBackgroundColor: "#1B5E20",
+
+                        borderRadius: 12,
+
+                        borderSkipped: false,
+
+                        barThickness: 40,
+
+                        maxBarThickness: 45
+
+                    }
+
+                ]
+
+            },
+
+            options: {
+
+                responsive: true,
+
+                maintainAspectRatio: false,
+
+                plugins: {
+
+                    legend: {
+                        display: false
+                    },
+
+                    tooltip: {
+                        backgroundColor: "#1f2937",
+                        padding: 12,
+                        cornerRadius: 8
+                    }
+
+                },
+
+                scales: {
+
+                    x: {
+
+                        grid: {
+                            display: false
+                        },
+
+                        ticks: {
+                            color: "#555",
+                            font: {
+                                size: 13,
+                                weight: "bold"
+                            }
+                        }
+
+                    },
+
+                    y: {
+
+                        beginAtZero: true,
+
+                        grid: {
+                            color: "#eeeeee"
+                        },
+
+                        ticks: {
+                            color: "#666"
+                        }
+
+                    }
+
+                }
+
+            }
+
+        }
+
+    );
+
+</script>
+
+{% endblock %}
+
+
+
+
+
+
+
+
+
+

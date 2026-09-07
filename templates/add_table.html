@@ -1,0 +1,207 @@
+{% extends "base.html" %}
+
+{% block title %}
+Add New Table | Varhadi Virasat
+{% endblock %}
+
+{% block content %}
+
+<section class="admin-dashboard">
+
+    <h1 class="page-title">
+        <i class="bi bi-plus-circle"></i>
+        Add New Table
+    </h1>
+
+    <div class="manage-top">
+
+        <a href="/manage_tables">
+
+            <button class="secondary-btn">
+
+                <i class="bi bi-arrow-left-circle"></i>
+
+                Back to QR Management
+
+            </button>
+
+        </a>
+
+    </div>
+
+    <div class="add-table-card">
+
+        <div class="card-header">
+
+            <h2>
+
+                <i class="bi bi-qr-code"></i>
+
+                Create Table & Generate QR
+
+            </h2>
+
+            <p>
+                Enter the table details below. The QR Code will be generated automatically.
+            </p>
+
+        </div>
+
+        <form method="POST">
+
+            <div class="form-grid">
+
+                <!-- Table Number -->
+
+                <div class="form-group">
+
+                    <label>
+
+                        <i class="bi bi-hash"></i>
+
+                        Table Number
+
+                    </label>
+
+                    <input
+                        type="number"
+                        name="table_number"
+                        placeholder="Example : 31"
+                        required>
+
+                </div>
+
+                <!-- Area -->
+
+                <div class="form-group">
+
+                    <label>
+
+                        <i class="bi bi-grid"></i>
+
+                        Area
+
+                    </label>
+
+                    <select
+                        id="area"
+                        name="area"
+                        onchange="toggleOtherArea()"
+                        required>
+
+                        <option value="" selected disabled>Select Area</option>
+
+                        <option value="Dining">Dining</option>
+
+                        <option value="Private Dining">Private Dining</option>
+
+                        <option value="Terrace">Terrace</option>
+
+                        <option value="Garden">Garden</option>
+
+                        <option value="Other">Other</option>
+
+                    </select>
+
+                </div>
+                
+            </div>
+
+            <!-- Other Area -->
+
+            <div
+                class="form-group"
+                id="otherAreaDiv"
+                style="display:none;">
+
+                <label>
+
+                    <i class="bi bi-pencil-square"></i>
+
+                    Enter Area Name
+
+                </label>
+
+                <input
+                    type="text"
+                    id="otherArea"
+                    placeholder="Example : Rooftop, VIP Lounge">
+
+            </div>
+
+            <!-- Position -->
+
+            <div class="form-group">
+
+                <label>
+
+                    <i class="bi bi-geo-alt"></i>
+
+                    Position
+
+                </label>
+
+                <input
+                    type="text"
+                    name="position"
+                    placeholder="Example : D16"
+                    required>
+
+            </div>
+
+            <!-- Submit -->
+
+            <button
+                type="submit"
+                class="create-table-btn">
+
+                <i class="bi bi-check-circle-fill"></i>
+
+                Create Table & Generate QR
+
+            </button>
+
+        </form>
+
+    </div>
+
+</section>
+
+<script>
+
+function toggleOtherArea(){
+
+    const area = document.getElementById("area").value;
+
+    const otherDiv = document.getElementById("otherAreaDiv");
+
+    const otherInput = document.getElementById("otherArea");
+
+    if(area === "Other"){
+
+        otherDiv.style.display = "block";
+
+        otherInput.required = true;
+
+        otherInput.name = "area";
+
+    }
+    else{
+
+        otherDiv.style.display = "none";
+
+        otherInput.required = false;
+
+        otherInput.removeAttribute("name");
+
+    }
+
+}
+
+</script>
+
+{% endblock %}
+
+
+
+

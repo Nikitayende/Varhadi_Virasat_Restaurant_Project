@@ -1,0 +1,184 @@
+    
+{% extends "base.html" %}
+
+{% block content %}
+
+<section class="menu-section">
+
+    <div class="menu-header">
+
+        <h1>🍽 Our Menu</h1>
+
+        <p>
+            Fresh • Pure Veg • Authentic Taste
+        </p>
+
+    </div>
+
+    <div class="category-buttons">
+
+        <button class="category-btn active" data-category="All">
+            All
+        </button>
+
+        <button class="category-btn" data-category="Varhadi Heritage">
+            Varhadi
+        </button>
+
+        <button class="category-btn" data-category="Maharashtrian Classics">
+            Maharashtrian
+        </button>
+
+        <button class="category-btn" data-category="Paneer Specials">
+            Paneer
+        </button>
+
+        <button class="category-btn" data-category="Chinese">
+            Chinese
+        </button>
+
+        <button class="category-btn" data-category="Street Food">
+            Fast Food
+        </button>
+
+        <button class="category-btn" data-category="Pizza">
+            Pizza
+        </button>
+
+        <button class="category-btn" data-category="Desserts">
+            Desserts
+        </button>
+
+        <button class="category-btn" data-category="Beverages">
+            Beverages
+        </button>
+
+    </div>
+
+    <div class="search-box">
+
+        <input
+            type="text"
+            id="searchInput"
+            placeholder="🔍 Search your favorite dish..."
+        >
+
+    </div>
+
+    <div class="menu-grid">
+
+        {% for item in menu_items %}
+
+        <div
+            class="menu-card"
+            data-category="{{ item.category }}"
+        >
+
+        <div class="menu-image">
+
+            <img
+                src="{{ url_for('static', filename='images/dishes/' + item.image) }}"
+                alt="{{ item.dish_name }}"
+            >
+
+        </div>
+
+            <div class="menu-content">
+
+                <span class="veg-badge">
+                    🟢 Pure Veg
+                </span>
+
+                {% if item.special == "Yes" %}
+
+                <span class="special-badge">
+                    ⭐ Chef Special
+                </span>
+
+                {% endif %}
+
+                <h3>
+
+                    {{ item.dish_name }}
+
+                </h3>
+
+                <p>
+
+                    {{ item.description }}
+
+                </p>
+
+                <div class="price-row">
+
+                    <span class="price">
+
+                        ₹{{ item.price }}
+
+                    </span>
+
+                </div>
+
+                <button class="quick-view-btn"
+                        onclick="openDishModal(
+                            '{{ item.dish_name }}',
+                            '{{ item.price }}',
+                            '{{ url_for('static', filename='images/dishes/' + item.image) }}',
+                            '{{ item.description }}'
+                        )">
+                    <i class="bi bi-eye"></i> Quick View
+                </button>
+
+                <button class="add-cart-btn"
+                        onclick="addToCart(
+                            '{{ item.dish_name }}',
+                            '{{ item.price }}',
+                            '{{ url_for('static', filename='images/dishes/' + item.image) }}',
+                            this
+                        )">
+                    Add to Cart
+                </button>
+                
+            </div>
+
+        </div>
+
+        {% endfor %}
+
+    </div>
+
+</section>
+
+<div id="dishModal" class="dish-modal">
+
+    <div class="dish-modal-content">
+
+        <span class="close-modal" onclick="closeDishModal()">&times;</span>
+
+        <img id="modalDishImage">
+
+        <h2 id="modalDishName"></h2>
+
+        <h3 id="modalDishPrice"></h3>
+
+        <p id="modalDishDescription"></p>
+
+    </div>
+
+</div>
+<a href="/cart"
+   id="floating-cart-btn"
+   class="floating-cart-btn"
+   style="display:none;">
+
+    <i class="bi bi-cart-fill"></i>
+
+    <span id="floating-cart-count">0</span>
+
+    View Cart
+
+</a>
+
+{% endblock %}
+
+

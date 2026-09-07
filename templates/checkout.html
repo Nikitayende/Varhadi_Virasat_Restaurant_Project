@@ -1,0 +1,165 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<section class="checkout">
+
+    <h1>
+
+        <i class="bi bi-credit-card-2-front-fill"></i>
+
+        Checkout
+
+    </h1>
+
+    <form action="/place_order" method="POST">
+
+        <label>
+
+            <i class="bi bi-person-fill"></i>
+
+            Customer Name
+
+        </label>
+
+        <input
+            type="text"
+            name="customer_name"
+            id="customer_name"
+            maxlength="40"
+            minlength="2"
+            pattern="[A-Za-z ]+"
+            title="Name should contain only letters and spaces (2-40 characters)."
+            required
+        >
+
+        <label>
+
+            <i class="bi bi-telephone-fill"></i>
+
+            Phone Number
+
+        </label>
+
+        <input
+            type="tel"
+            name="phone"
+            id="phone"
+            maxlength="10"
+            minlength="10"
+            pattern="[6-9][0-9]{9}"
+            title="Enter a valid 10-digit Indian mobile number."
+            required
+        >
+
+        <label>
+
+            <i class="bi bi-shop"></i>
+
+            Order Type
+
+        </label>
+
+        <select
+            name="order_type"
+            id="order_type"
+            onchange="toggleTable()"
+            required
+        >
+
+            <option value="Dine In">Dine In</option>
+
+            <option value="Takeaway">Takeaway</option>
+
+        </select>
+
+        <label>
+
+            <i class="bi bi-wallet2"></i>
+
+            Payment Method
+
+        </label>
+
+        <select
+            name="payment_method"
+            required
+        >
+
+            <option value="Cash">💵 Cash</option>
+
+            <option value="UPI">📱 UPI</option>
+
+            <option value="Card">💳 Card</option>
+
+        </select>
+        <div id="tableDiv">
+
+            <label>
+
+                <i class="bi bi-table"></i>
+
+                Table Number
+
+            </label>
+
+            <input
+                type="number"
+                name="table_number"
+                id="table_number"
+                min="1"
+            >
+
+        </div>
+
+        <label>
+
+            <i class="bi bi-chat-left-text-fill"></i>
+
+            Special Instructions
+
+        </label>
+
+        <textarea
+            name="instructions"
+            rows="4"
+            placeholder="Any special request..."
+        ></textarea>
+
+        <button type="submit">
+
+            <i class="bi bi-check-circle-fill"></i>
+
+            Confirm Order
+
+        </button>
+
+    </form>
+
+</section>
+
+{% with messages = get_flashed_messages() %}
+    {% if messages %}
+        <div class="alert-error">
+            {% for message in messages %}
+                <p>{{ message }}</p>
+            {% endfor %}
+        </div>
+    {% endif %}
+{% endwith %}
+
+<script>
+
+document.getElementById("phone").addEventListener("input", function () {
+
+    this.value = this.value.replace(/\D/g, "");
+
+    if (this.value.length > 10) {
+        this.value = this.value.slice(0, 10);
+    }
+
+});
+
+</script>
+
+{% endblock %}
